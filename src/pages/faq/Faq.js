@@ -15,8 +15,8 @@ const Faq = () => {
     })
     return (
         <div>
-            <div>
-                <header className="  w-[90%] tablet:w-[80%] mx-auto">
+            <div className='custom-view-height flex flex-col'>
+                <header className="  w-[90%] tablet:w-[80%] mx-auto flex-1">
                     <div className="">
                         <div className="accordion-body">
                             <div className="accordion">
@@ -53,9 +53,10 @@ const Faq = () => {
                             </div>
                         </div>
                     </div>
-                    <Footer />
+                   
 
                 </header>
+                {/* <Footer /> */}
             </div>
         </div>
     )

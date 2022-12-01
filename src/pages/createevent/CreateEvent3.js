@@ -54,7 +54,7 @@ const CreateEvent3 = ({ form, handleChange }) => {
                                     </div>
                                 </div>
                             </form>
-                            <div className=" md:ml-[7%] lg:ml-[18%] mt-7 lg:mt-0">
+                            <div className=" md:ml-[4%] lg:ml-[18%] mt-7 lg:mt-0">
                                 <h3>Live Preview</h3>
                                 <EventCard />
                             </div>

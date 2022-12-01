@@ -1,11 +1,11 @@
 import { Magic } from "magic-sdk";
 import { ConnectExtension } from "@magic-ext/connect";
 
-// export const magic = new Magic("pk_live_1C298480B4160A8F", {
-//   network: "goerli",
-//   locale: "en_US",
-//   extensions: [new ConnectExtension()]
-// });
+export const magic = new Magic("pk_live_169153A1062F1503", {
+  network: "goerli",
+  locale: "en_US",
+  extensions: [new ConnectExtension()]
+});
 
 export const navlinks = [
   {

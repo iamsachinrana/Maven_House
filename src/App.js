@@ -22,7 +22,7 @@ import Faq from './pages/faq/Faq';
 import MagicLogin from '@pages/Login/MagicLogin';
 import DashboardRoutes from '@pages/DashboardRoutes';
 import About from '@pages/about/About';
-// import Footer from '@components/layout/Footer';
+import Footer from '@components/layout/Footer';
 import Navbar from '@components/layout/Navbar';
 import { useEffect } from 'react';
 import GoLive from './pages/go-live/GoLive';
@@ -31,8 +31,6 @@ import Drake from './pages/creaters-name/Drake';
 import Doja_Cat from './pages/creaters-name/Doja_Cat';
 import Emiway from './pages/creaters-name/Emiway';
 import Lil_Nas_X from './pages/creaters-name/Lil_Nas_X';
-import ConnectWalletPopup from './components/popup/ConnectWalletPopup';
-import { closeWalletModal } from './redux/action';
 
 
 
@@ -57,7 +55,6 @@ const Routes = ({ }) => {
   const { type, message, isVisible } = useSelector(
     (state) => state.toastReducer
   );
-  const { isWalletOpen } = useSelector((state) => state.walletModalReducer);
 
   const handleClose = () => {
     dispatch({
@@ -93,45 +90,11 @@ const Routes = ({ }) => {
         <Route path={'/drake'} exact component={Drake} />
         <Route path={'/doja-cat'} exact component={Doja_Cat} />
         <Route path={'/emiway'} exact component={Emiway} />
-
-
-
-
-
-        {/* <Route path={"/user"} render={(props) => <UserRoutes {...props}/>}
-    {isVisible&&<CustomSnackBar type={type} message={message}/>}
-    <Navbar/>
-      <Switch>     
-        <Route path={'/home'} exact component={Home} />        
-        <Route path={'/'} exact component={LoginWallet} />        
-        <Route path={'/ticket'} exact component={Ticket} />  
-        <Route path={'/checkout'} exact component={Checkout} />   
-        <Route path={'/create-event'} exact component={CreateEvent} />  
-        <Route path={'/create-event1'} exact component={CreateEvent1} />  
-        <Route path={'/create-event2'} exact component={CreateEvent2} />   
-        <Route path={'/create-event3'} exact component={CreateEvent3} />  
-        <Route path={'/create-event4'} exact component={CreateEvent4} />   
-        <Route path={'/faq'} exact component={Faq} />  
-        <Route path={'/about'} exact component={About} />  
-        {/* <Route path={'/footer'} exact component={Footer} />   */}
-        {/* <Route path={'/terms'} exact component={Terms} /> */}
         <Route path={'/about'} export component={About} />
-        {/* <Route path={'/privacy'} exact component={Privacy} /> */}
-        {/* <Route path={'/terms'} exact component={Terms} /> */}
-
         <Route path={"/dashboard"} render={(props) => <DashboardRoutes {...props} />} />
-        {/* <Route path={'/footer'} exact component={Footer} />   */}
-        {/* <Route path={"/user"} render={(props) => <UserRoutes {...props}/>}
-        />
-        <ProtectedRoutes path={'/profile'} exact component={Profile} />
-        <Route path={'/*'} exact component={NotFound} /> */}
+
       </Switch>
-      {isWalletOpen && (
-        <ConnectWalletPopup
-          isOpen={isWalletOpen}
-          onClose={() => dispatch(closeWalletModal())}
-        />
-      )}
+      {(location.pathname === '/' || location.pathname === '/about' || location.pathname === '/faq' || location.pathname === '/create-event') && <Footer />}
     </>
 
   );

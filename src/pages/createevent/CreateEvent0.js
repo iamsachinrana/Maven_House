@@ -1,31 +1,33 @@
 import React from 'react'
-
+import EventCard from '@components/eventcard/EventCard'
 export default function CreateEvent0({ form, handleChange }) {
   return (
     <div className="create-post-wrapper text-white px-0 sm:px-4  my-12 max-w-[1440px] mx-auto">
-      <h2 className="lg:text-2xl text-xl  font-semibold">Tell us about your event</h2>
-      <div className=" flex gap-6 sm:gap-12 items-center mt-2 tablet:mt-6">
-        <div className=" flex items-center gap-3 text-xs tablet:text-md ">
-          Is it a paid event?<div className="-mt-2">
-            <label class="switch">
-              <input type="checkbox" />
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-        <div className=" flex items-center gap-1 text-sm lg:text-md">
-          Invite only Event?<div className=" -mt-2">
-            <label class="switch">
-              <input type="checkbox" />
-              <span class="slider"></span>
-            </label>
-          </div>
 
-        </div>
-      </div>
       <div className=" mt-5">
         <div className=" grid lg:gap-7 tablet:gap-5 md:grid-cols-2">
           <form action="">
+            <div className="">
+              <h2 className="lg:text-2xl text-xl  font-semibold">Tell us about your event</h2>
+              <div className=" flex gap-6 sm:gap-12 items-center mt-2 tablet:mt-6">
+                <div className=" flex items-center gap-3 text-xs tablet:text-md ">
+                  Is it a paid event?<div className="-mt-2">
+                    <label class="switch">
+                      <input type="checkbox" />
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                </div>
+                <div className=" flex items-center gap-1 text-sm lg:text-md">
+                  Invite only Event?<div className=" -mt-2">
+                    <label class="switch">
+                      <input type="checkbox" />
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="grid grid-cols-2 gap-2 md:gap-5 pt-2 tablet:pt-6">
               <div className="flex flex-col col-span-2">
                 <label className="text-sm tablet:text-md " for="">Event Name </label>
@@ -38,7 +40,7 @@ export default function CreateEvent0({ form, handleChange }) {
 
                 <select name="eventType" id="cars" value={form.eventType} onChange={handleChange} className="text-xs bg-gray-700 focus:border-none border-0" >
                   <option value="volvo">Volvo</option>
-                  <option value="USER">Saab</option>
+                  <option value="saab">Saab</option>
                   <option value="opel">Opel</option>
                   <option value="audi">Audi</option>
                 </select>
@@ -77,9 +79,9 @@ export default function CreateEvent0({ form, handleChange }) {
               </div>
             </div>
           </form>
-          <div className="xl:ml-[18%]  mt-7 tablet:mt-0">
+          <div className="md:ml-[2%] lg:ml-[18%]   mt-7 tablet:mt-0">
             <h3>Live Preview</h3>
-            <div className="md:h-[400px] tablet:h-[490px] md:w-[450px] md:mt-9 mt-3 rounded-3xl overflow-hidden  ">
+            {/* <div className="md:h-[400px] tablet:h-[490px] md:w-[450px] md:mt-9 mt-3 rounded-3xl overflow-hidden  ">
               <div className="relative tablet:h-[350px] md:h-auto ">
                 <img src="/images/createevent/bhubhan-bam-wallpapaer.png" className="object-cover h-full w-full" alt="" />
                 <div className="absolute top-2 w-full px-2">
@@ -107,7 +109,9 @@ export default function CreateEvent0({ form, handleChange }) {
                   <p className="text-md pt-4"><span className="text-[#CF90DC]">0/100</span> Tickets Sold</p>
                 </div>
               </div>
-            </div>
+            </div> */}
+            <EventCard />
+
           </div>
         </div>
       </div>

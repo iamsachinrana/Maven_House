@@ -9,7 +9,7 @@ const Drake = () => {
                 <header className=" px-4 Drake h_creater flex flex-col place-content-around text-white">
                     <div className="header-wrapper">
                         <marquee direction="left" scrollamount="12" loop="1">
-                            <h1 className="text-4xl tablet:text-[90px]md:text-[100px] font-semibold text-center ">DRAKE DRAKE DRAKE DRAKE DRAKE</h1>
+                            <h1 className="tablet:text-[90px] md:text-[100px]  text-4xl  font-semibold text-center">DRAKE DRAKE DRAKE DRAKE DRAKE</h1>
                         </marquee>
                     </div>
                     <div className="header-wrapper-2 relative md:flex md:justify-between">

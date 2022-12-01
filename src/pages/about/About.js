@@ -4,8 +4,8 @@ import Navbar from '../../components/layout/Navbar'
 
 const About = () => {
     return (
-        <div className="">
-            <div className='text-white w-[90%] tablet:w-[80%] mx-auto'>
+        <div className="custom-view-height flex flex-col">
+            <div className='text-white w-[90%] tablet:w-[80%] mx-auto flex-1'>
                 <div className=" mt-5">
                     <h1 className='text-3xl tablet:text-7xl  md:text-[72px] '>About</h1>
                 </div>
@@ -22,8 +22,8 @@ const About = () => {
 
                     </div >
                 </div>
-                <Footer />
             </div>
+                {/* <Footer /> */}
         </div>
     )
 }

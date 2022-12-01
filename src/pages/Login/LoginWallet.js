@@ -30,7 +30,7 @@ const LoginWallet = () => {
                     items: 3
                 },
                 1000: {
-                    items: 4,
+                    items: 3,
                 },
                 1240: {
                     items: 5,
@@ -56,7 +56,7 @@ const LoginWallet = () => {
 
     return (
         <>
-            <div className='relative'>
+            <div className='mt-4'>
                 <header className="px-4 text-white login-header">
                     <div className="owl-carousel owl-theme relative" >
                         {singerImage.map((item, index) => (
@@ -65,7 +65,7 @@ const LoginWallet = () => {
                                     <img src={item?.imgpath} alt="" />
                                     <div className="slider-wrapper-content justify-center  flex flex-col gap-2">
                                         <h2 className={`text-3xl ${index === 0 ? `font-think` : index === 1 ? `font-hey` : index === 2 ? `font-viner` : index === 3 ? 'font-gloucester' : `font-hey`}`}>{item.name}</h2>
-                                        <p>{item.paragraph}
+                                        <p className=' min-h-[194px] flex items-'>{item.paragraph}
                                         </p>
                                         <p>{item.date}</p>
                                         <button type="submit" className='bg-black px-2 py-1 rounded-xl hover:bg-[#06060691]  text-xs' >Get Tickets</button>
