@@ -31,6 +31,8 @@ import Drake from './pages/creaters-name/Drake';
 import Doja_Cat from './pages/creaters-name/Doja_Cat';
 import Emiway from './pages/creaters-name/Emiway';
 import Lil_Nas_X from './pages/creaters-name/Lil_Nas_X';
+import ConnectWalletPopup from './components/popup/ConnectWalletPopup';
+import { closeWalletModal } from './redux/action';
 
 
 
@@ -55,6 +57,7 @@ const Routes = ({ }) => {
   const { type, message, isVisible } = useSelector(
     (state) => state.toastReducer
   );
+  const { isWalletOpen } = useSelector((state) => state.walletModalReducer);
 
   const handleClose = () => {
     dispatch({
@@ -123,7 +126,12 @@ const Routes = ({ }) => {
         <ProtectedRoutes path={'/profile'} exact component={Profile} />
         <Route path={'/*'} exact component={NotFound} /> */}
       </Switch>
-
+      {isWalletOpen && (
+        <ConnectWalletPopup
+          isOpen={isWalletOpen}
+          onClose={() => dispatch(closeWalletModal())}
+        />
+      )}
     </>
 
   );

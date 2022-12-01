@@ -38,7 +38,7 @@ export default function CreateEvent0({ form, handleChange }) {
 
                 <select name="eventType" id="cars" value={form.eventType} onChange={handleChange} className="text-xs bg-gray-700 focus:border-none border-0" >
                   <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
+                  <option value="USER">Saab</option>
                   <option value="opel">Opel</option>
                   <option value="audi">Audi</option>
                 </select>
