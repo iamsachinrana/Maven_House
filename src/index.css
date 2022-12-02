@@ -94,6 +94,9 @@ h2 {
   .dash-btn{
     @apply rounded-xl hover:bg-slate-600  hover:cursor-pointer text-body2  items-center duration-300 flex gap-3  px-5  hover:text-[gray] py-1 w-full
   }
+  .artfont{
+    @apply text-[48px];
+  }
 
 }
 @layer utilities  {

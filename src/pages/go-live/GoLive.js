@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const GoLive = () => {
     return (
         <div className='h-sc' >
-            <div className="login-navbar">
+            {/* <div className="login-navbar">
                 <nav className=" center-b  flex-col tablet:h-20 tablet:flex-row  text-white  py-2 tablet:py-0 px-4  ">
                     <div className="">
                         <NavLink to="">
@@ -17,7 +17,7 @@ const GoLive = () => {
                         <li> <div className="w-8 cursor-pointer outline-4  outline-[#3E4046] border border-white h-8 bg-[#9B9B9B] rounded-full  text-sm center">M</div></li>
                     </ul>
                 </nav>
-            </div>
+            </div> */}
             <div className=" flex flex-col tablet:flex-row justify-around items-center  text-white py-[8%]  ">
                 <div className="w-[320px] tablet:w-[340px] md:w-[450px]  max-w-[650px]">
                     <form action="">

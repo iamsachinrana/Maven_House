@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 
 const LoginWallet = () => {
     const history = useHistory();
-    let user = Cookies.get('user');
+    let user = Cookies.get('user-data');
 
     useEffect(() => {
         const $ = window.$;
@@ -53,7 +53,9 @@ const LoginWallet = () => {
             history.push('/emiway')
         }
     }
-
+    useEffect(() => {
+        Cookies.remove('user-type');
+    }, [])
     return (
         <>
             <div className='mt-4'>
@@ -64,7 +66,7 @@ const LoginWallet = () => {
                                 <div className="slider-wrapper h-">
                                     <img src={item?.imgpath} alt="" />
                                     <div className="slider-wrapper-content justify-center  flex flex-col gap-2">
-                                        <h2 className={`text-3xl ${index === 0 ? `font-think` : index === 1 ? `font-hey` : index === 2 ? `font-viner` : index === 3 ? 'font-gloucester' : `font-hey`}`}>{item.name}</h2>
+                                        <h2 className={`artfont leading-10 ${index === 0 ? `font-think` : index === 1 ? `font-hey` : index === 2 ? `font-viner` : index === 3 ? 'font-gloucester' : `font-hey`}`}>{item.name}</h2>
                                         <p className=' min-h-[194px] flex items-'>{item.paragraph}
                                         </p>
                                         <p>{item.date}</p>

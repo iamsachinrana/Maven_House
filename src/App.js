@@ -31,6 +31,11 @@ import Drake from './pages/creaters-name/Drake';
 import Doja_Cat from './pages/creaters-name/Doja_Cat';
 import Emiway from './pages/creaters-name/Emiway';
 import Lil_Nas_X from './pages/creaters-name/Lil_Nas_X';
+import ConnectWalletPopup from './components/popup/ConnectWalletPopup';
+import { closeWalletModal } from './redux/action';
+import Creator from './pages/Creator/Creator';
+import CreatorNavbar from './components/layout/CreatorNavbar';
+import Cookies from 'js-cookie';
 
 
 
@@ -55,6 +60,9 @@ const Routes = ({ }) => {
   const { type, message, isVisible } = useSelector(
     (state) => state.toastReducer
   );
+  let userType = Cookies.get('user-type');
+  userType = userType ? JSON?.parse(userType) : userType
+  const { isWalletOpen } = useSelector((state) => state.walletModalReducer);
 
   const handleClose = () => {
     dispatch({
@@ -65,11 +73,11 @@ const Routes = ({ }) => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [location.pathname])
-
+  console.log(userType, 'pathname')
   return (
     <>
       {isVisible && <CustomSnackBar type={type} message={message} />}
-      {location.pathname !== '/go-live' ? <Navbar /> : ''}
+      {location.pathname === '/go-live' || location.pathname === '/creator' || location.pathname === '/create-event' || userType?.type === 'creator' ? <CreatorNavbar /> : <Navbar />}
 
 
       <Switch>
@@ -91,10 +99,17 @@ const Routes = ({ }) => {
         <Route path={'/doja-cat'} exact component={Doja_Cat} />
         <Route path={'/emiway'} exact component={Emiway} />
         <Route path={'/about'} export component={About} />
+        <Route path={'/creator'} export component={Creator} />
         <Route path={"/dashboard"} render={(props) => <DashboardRoutes {...props} />} />
 
       </Switch>
       {(location.pathname === '/' || location.pathname === '/about' || location.pathname === '/faq' || location.pathname === '/create-event') && <Footer />}
+      {isWalletOpen && (
+        <ConnectWalletPopup
+          isOpen={isWalletOpen}
+          onClose={() => dispatch(closeWalletModal())}
+        />
+      )}
     </>
 
   );
