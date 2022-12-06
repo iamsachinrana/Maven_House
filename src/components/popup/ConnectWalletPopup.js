@@ -40,7 +40,7 @@ const ConnectWalletPopup = ({ isOpen, onClose }) => {
                           .then((authTokenRes) => {
                             if (authTokenRes.status) {
                               Cookies.set(
-                                "user-data",
+                                "user",
                                 authTokenRes.data.token,
                                 { expires: 1 }
                               );

@@ -2,6 +2,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { NavLink, useHistory } from 'react-router-dom';
+
 const HomePage = () => {
     const history = useHistory();
     useEffect(() => {
@@ -35,290 +36,290 @@ const HomePage = () => {
         });
 
     })
-    
-  return (
-    <div className=''>
-    
-    <header className="px-4 py-16 text-white">
-        <div className="owl-carousel owl-theme relative">
-            <div className="item">
-                <div className="slider-wrapper h-">
-                    <img src="/images/home/img1.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img2.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img3.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img4.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img5.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img6.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img7.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img5.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img1.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img2.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img3.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img4.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <p className=" pt-4 text-center w-full">
-            <a href="" className="text-center">See More ></a>
-        </p>
 
-    </header>
-    <header className="px-4 py-16 text-white">
-        <div className="owl-carousel owl-theme relative">
-            <div className="item">
-                <div className="slider-wrapper h-">
-                    <img src="/images/home/img1.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img2.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img3.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img4.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img5.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img6.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img7.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img5.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img1.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img2.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img3.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2" >
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-            <div className="item">
-                <div className="slider-wrapper">
-                    <img src="/images/home/img4.png" alt="" />
-                    <div className="slider-wrapper-content flex flex-col gap-2">
-                        <h2 className="text-3xl">Honey Singh</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
-                        </p>
-                        <p>Jan 18 2022</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+    return (
+        <div className=''>
 
-    </header>
-    </div>
-  )
+            <header className="px-4 py-16 text-white">
+                <div className="owl-carousel owl-theme relative">
+                    <div className="item">
+                        <div className="slider-wrapper h-">
+                            <img src="/images/home/img1.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img2.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img3.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img4.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img5.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img6.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img7.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img5.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img1.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img2.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img3.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img4.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p className=" pt-4 text-center w-full">
+                    <a href="" className="text-center">See More ></a>
+                </p>
+
+            </header>
+            <header className="px-4 py-16 text-white">
+                <div className="owl-carousel owl-theme relative">
+                    <div className="item">
+                        <div className="slider-wrapper h-">
+                            <img src="/images/home/img1.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img2.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img3.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img4.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img5.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img6.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img7.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img5.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img1.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img2.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img3.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2" >
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item">
+                        <div className="slider-wrapper">
+                            <img src="/images/home/img4.png" alt="" />
+                            <div className="slider-wrapper-content flex flex-col gap-2">
+                                <h2 className="text-3xl">Honey Singh</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam debitis omnis corporis eum
+                                </p>
+                                <p>Jan 18 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </header>
+        </div>
+    )
 }
 
 

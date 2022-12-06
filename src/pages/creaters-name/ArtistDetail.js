@@ -1,21 +1,60 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom'
 
-const Kendrick_Lamar = () => {
+const ArtistDetail = () => {
+  const { id } = useParams();
   const history = useHistory();
+  const [image, setImage] = useState();
+
+  let bg, title, profile;
+
+  const setBg = () => {
+    if (Number(id) === 1) {
+      profile = "/images/login/Kendrick.png";
+      bg = '/images/creaters-name/kendrick.png';
+      title = 'KENDRICK LAMAR KENDRICK LAMAR KENDRICK LAMAR';
+    }
+    if (Number(id) === 2) {
+      profile = "/images/login/Lil-Nas-x.png";
+      bg = '/images/creaters-name/lil.png';
+      title = 'LIL NAS X LIL NAS X LIL NAS X';
+    }
+    if (Number(id) === 3) {
+      profile = "/images/login/DRAKE.png";
+      bg = '/images/creaters-name/drake.png';
+      title = 'DRAKE DRAKE DRAKE DRAKE DRAKE';
+    }
+    if (Number(id) === 4) {
+      profile = "/images/login/DOJA-CAT.png";
+      bg = '/images/creaters-name/doja.png';
+      title = 'DOJA CAT DOJA CAT DOJA CAT DOJA CAT';
+    }
+    if (Number(id) === 5) {
+      profile = "/images/login/Emiway-Bantai.png";
+      bg = '/images/creaters-name/emiway.png';
+      title = 'EMIWAY EMIWAY EMIWAY EMIWAY EMIWAY';
+    }
+  }
+
+  setBg();
+
   return (
     <div>
       <div>
-        <header className=" px-4 Kendrick_Lamar h_creater flex flex-col place-content-around text-white">
+        <header className={
+          ` px-4  h_creater flex object-cover bg-[75%_17%] bg-no-repeat flex-col place-content-around text-white`}
+          style={{ backgroundImage: `url(${bg})` }}>
           <div className="header-wrapper">
             <marquee direction="left" scrollamount="12" loop="1">
-              <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-semibold text-center ">KENDRICK LAMAR KENDRICK LAMAR KENDRICK LAMAR</h1>
+              <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-semibold text-center ">{title}</h1>
             </marquee>
           </div>
           <div className="header-wrapper-2 relative md:flex md:justify-between">
             <div className="left-side backdrop-blur-md bg-[#00000059] items-center  md:flex gap-4 w-[500px] md:w-[573px] rounded-2xl p-3">
               <div className=" bhuvam-radius-image overflow-hidden border-4 border-[#707070]">
-                <img className="object-cover w-full h-full rounded-full" src="/images/ticket/bhubhan-bam-wallpaper.png" alt="" />
+                <img className="object-cover w-full h-full object-top rounded-full" src={profile} alt="" />
               </div>
               <div className=" md:w-[24rem]">
                 <h6 className="text-xs">DIGITAL WORLDWIDE MOMENT - OCTOBER 6TH, 2022 6:30AM IST</h6>
@@ -40,8 +79,8 @@ const Kendrick_Lamar = () => {
           </div>
         </header>
       </div>
-    </div>
+    </div >
   )
 }
 
-export default Kendrick_Lamar
+export default ArtistDetail;
