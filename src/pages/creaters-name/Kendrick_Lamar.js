@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 const Kendrick_Lamar = () => {
+  const [locked, setLocked] = useState("pending");
+
   const history = useHistory();
+
+
+  const unlockHandler = (e) => {
+    console.log('event', e);
+    setLocked(e.detail);
+  }
+
+  const checkOut = (e) => {
+    e.preventDefault();
+    window.unlockProtocol && window.unlockProtocol.loadCheckoutModal();
+  }
+
+  useEffect(() => {
+    window.addEventListener('unlockProtocol', unlockHandler);
+  }, [])
   return (
     <div>
       <div>
@@ -23,7 +40,7 @@ const Kendrick_Lamar = () => {
                 <p className="text-xs mt-1">Join Dane Cook on October 5th for his latest stand-up comedy event ‘Above It All’ filmed from his
                   front porch overlooking Los Angeles. This all new comedy routine is his third w/ director
                   Mart...</p>
-                <button className="mt-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push('/checkout')}>Buy Ticket Now</button>
+                <button className="mt-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={checkOut}>Buy Ticket Now</button>
               </div>
             </div>
             <div className="right-side  w-72 mt-16 md:mt-0 md:absolute -bottom-3 right-0 ">
