@@ -26,7 +26,7 @@ import Footer from '@components/layout/Footer';
 import Navbar from '@components/layout/Navbar';
 import { useEffect } from 'react';
 import GoLive from './pages/go-live/GoLive';
-import Kendrick_Lamar from './pages/creaters-name/Kendrick_Lamar';
+import Kendrick_Lamar from './pages/creaters-name/ArtistDetail';
 import Drake from './pages/creaters-name/Drake';
 import Doja_Cat from './pages/creaters-name/Doja_Cat';
 import Emiway from './pages/creaters-name/Emiway';
@@ -36,6 +36,7 @@ import { closeWalletModal } from './redux/action';
 import Creator from './pages/Creator/Creator';
 import CreatorNavbar from './components/layout/CreatorNavbar';
 import Cookies from 'js-cookie';
+import ArtistDetail from './pages/creaters-name/ArtistDetail';
 
 
 
@@ -64,16 +65,10 @@ const Routes = ({ }) => {
   userType = userType ? JSON?.parse(userType) : userType
   const { isWalletOpen } = useSelector((state) => state.walletModalReducer);
 
-  const handleClose = () => {
-    dispatch({
-      type: HIDE_TOAST,
-    });
-  };
-
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [location.pathname])
-  console.log(userType, 'pathname')
+
   return (
     <>
       {isVisible && <CustomSnackBar type={type} message={message} />}
@@ -93,7 +88,7 @@ const Routes = ({ }) => {
         <Route path={'/create-event4'} exact component={CreateEvent4} />
         <Route path={'/faq'} exact component={Faq} />
         <Route path={'/go-live'} exact component={GoLive} />
-        <Route path={'/kendrick'} exact component={Kendrick_Lamar} />
+        <Route path={'/artist-detail/:id'} exact component={ArtistDetail} />
         <Route path={'/lil-nas-x'} exact component={Lil_Nas_X} />
         <Route path={'/drake'} exact component={Drake} />
         <Route path={'/doja-cat'} exact component={Doja_Cat} />

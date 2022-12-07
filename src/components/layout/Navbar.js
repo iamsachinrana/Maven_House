@@ -88,8 +88,6 @@ const Navbar = () => {
         Cookies.remove('user-type')
     };
 
-
-
     return (
         <>
             <div>
@@ -127,10 +125,10 @@ const Navbar = () => {
                                 </div>
                             </li>
                             : <li>
-                                <button onClick={login} className="px-1 tablet:px-3 py-1  rounded-3xl border hover:bg-transparent border-gray-600 bg-[#707070]" >Log In / Sign In</button>
-                                {/* <button className="px-1 tablet:px-3 py-1  rounded-3xl border hover:bg-transparent border-gray-600 bg-[#707070]"
+                                {/* <button onClick={login} className="px-1 tablet:px-3 py-1  rounded-3xl border hover:bg-transparent border-gray-600 bg-[#707070]" >Log In / Sign In</button> */}
+                                <button className="px-1 tablet:px-3 py-1  rounded-3xl border hover:bg-transparent border-gray-600 bg-[#707070]"
                                     onClick={() => dispatch(openWalletModal())}
-                                >Log In / Sign In</button> */}
+                                >Log In / Sign In</button>
                             </li>
                         }
                     </ul>

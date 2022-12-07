@@ -43,7 +43,6 @@ const CreateEvent = () => {
         })
     }
 
-
     function readFile(file) {
         const render = new FileReader();
         render.onload = function (e) {
