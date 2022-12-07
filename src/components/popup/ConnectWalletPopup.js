@@ -5,6 +5,17 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import queryString from "query-string";
 import { useHistory } from "react-router-dom";
+import { Magic } from "magic-sdk";
+import { ConnectExtension } from "@magic-ext/connect";
+import ENV from "@utils/env";
+import Web3 from "web3";
+
+const magic = new Magic(ENV.MAGIC_KEY, {
+  network: ENV.MAGIC_NETWORK,
+  locale: "en_US",
+  extensions: [new ConnectExtension()]
+});
+const web3 = new Web3(magic.rpcProvider);
 
 const ConnectWalletPopup = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
@@ -12,98 +23,86 @@ const ConnectWalletPopup = ({ isOpen, onClose }) => {
   const { ethereum } = window;
   const queryParam = queryString.parse(history.location.search);
   const [isLoading, setIsLoading] = useState(false);
+  const [account, setAccount] = useState(null);
 
   const connectMetaMaskWallet = async () => {
-    setIsLoading(true);
-    /**check metamast install or not  */
-    if (Boolean(ethereum && ethereum.isMetaMask)) {
-      try {
-        // Will open the MetaMask UI
-        await ethereum
-          .request({ method: "eth_requestAccounts" })
-          .then((res) => {
-            getReq(`/user/authenticate/${res[0]}`)
-              .then((authResponse) => {
-                if (authResponse.status) {
-                  ethereum
-                    .request({
-                      method: "personal_sign",
-                      params: [`${authResponse.data.consent}`, res[0]],
-                    })
-                    .then((sigRes) => {
-                      if (sigRes) {
-                        dispatch(closeWalletModal());
-                        postReq(`/user/authenticate`, {
-                          address: res[0],
-                          signature: sigRes,
-                        })
-                          .then((authTokenRes) => {
-                            if (authTokenRes.status) {
-                              Cookies.set(
-                                "user",
-                                authTokenRes.data.token,
-                                { expires: 1 }
-                              );
-                              dispatch(
-                                showToast({
-                                  type: "success",
-                                  message: "Metamask Wallet Connected",
-                                })
-                              );
-                              // history.push(`${queryParam?.referrer || '/'}`);
-                              history.push('/')
-                              dispatch(setWalletId(res[0]));
-                              setIsLoading(false);
-                            } else {
-                              dispatch(
-                                showToast({
-                                  type: "error",
-                                  message: authTokenRes.error,
-                                })
-                              );
-                              setIsLoading(false);
-                            }
-                          })
-                          .catch((e) => {
-                            setIsLoading(false);
-                            dispatch(
-                              showToast({
-                                type: "error",
-                                message: e?.authResponse?.data,
-                              })
-                            );
-                          });
-                      }
-                    })
-                    .catch((e) => {
-                      setIsLoading(false);
-                      dispatch(
-                        showToast({ type: "error", message: e?.message })
+    web3.eth
+      .getAccounts()
+      .then((accounts) => {
+        let _account = accounts?.[0]
+        setAccount(accounts?.[0]);
+        /*Authenticating Message*/
+        getReq(`/user/authenticate/${_account}`)
+          .then(async (authResponse) => {
+            if (authResponse.status) {
+
+              const signedMessage = await web3.eth.personal
+                .sign(`${authResponse.data.consent}`, _account, "")
+                .catch((e) => console.log(e));
+
+              if (signedMessage) {
+                dispatch(closeWalletModal());
+                postReq(`/user/authenticate`, {
+                  address: _account,
+                  signature: signedMessage,
+                })
+                  .then((authTokenRes) => {
+                    if (authTokenRes.status) {
+                      Cookies.set(
+                        "user",
+                        authTokenRes.data.token,
+                        { expires: 1 }
                       );
-                    });
-                } else {
-                  setIsLoading(false);
-                  dispatch(
-                    showToast({ type: "error", message: authResponse.error })
-                  );
-                }
-              })
-              .catch((e) => {
-                setIsLoading(false);
-                dispatch(
-                  showToast({ type: "error", message: e?.authResponse?.data })
-                );
-              });
+                      dispatch(
+                        showToast({
+                          type: "success",
+                          message: "Metamask Wallet Connected",
+                        })
+                      );
+                      // history.push(`${queryParam?.referrer || '/'}`);
+                      history.push('/')
+                      dispatch(setWalletId(_account));
+                      setIsLoading(false);
+                    } else {
+                      dispatch(
+                        showToast({
+                          type: "error",
+                          message: authTokenRes.error,
+                        })
+                      );
+                      setIsLoading(false);
+                    }
+                  })
+                  .catch((e) => {
+                    setIsLoading(false);
+                    dispatch(
+                      showToast({
+                        type: "error",
+                        message: e?.authResponse?.data,
+                      })
+                    );
+                  });
+              }
+
+            } else {
+              setIsLoading(false);
+              dispatch(
+                showToast({ type: "error", message: authResponse.error })
+              );
+            }
+          })
+          .catch((e) => {
+            setIsLoading(false);
+            dispatch(
+              showToast({ type: "error", message: e?.authResponse?.data })
+            );
           });
-      } catch (error) {
-        // console.error(error);
-        setIsLoading(false);
-      }
-    } else {
-      window.open("https://metamask.io/download/", "_blank");
-      setIsLoading(false);
-    }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
   const connectCoinBaseWallet = async () => {
     // const CoinbaseWallet = new WalletLinkConnector({
 
