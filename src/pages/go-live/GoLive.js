@@ -193,20 +193,20 @@ const GoLive = () => {
                     </ul>
                 </nav>
             </div> */}
-            <div className=" flex flex-col tablet:flex-row justify-around items-center  text-white py-[8%]  ">
+            <div className=" flex flex-col tablet:flex-row justify-around items-center  text-white py-[4%]  ">
 
-                <div className="w-[320px] md:w-[550px]  ">
+                <div className="w-[320px] md:w-[750px]  ">
                     {rowData?.id ?
                         <>
-                            < div className="relative go-live bg-black h-[350px] w-full mx-auto overflow-hidden rounded-xl mt-10">
+                            < div className="relative go-live bg-black h-[580px] w-full mx-auto overflow-hidden rounded-xl ">
                         <h1 className='absolute top-0 min-w-[250px] left-0 py-2 font-bold text-xl z-[10000] px-2  text-white'>
                             {rowData?.name}
                         </h1>
-                        <div data-vjs-player className='w-full h-full ![&>video]:h-[350px] ![&>:not(video)]:hidden'>
+                        <div data-vjs-player className='w-full h-full ![&>video]:h-[580px] ![&>:not(video)]:hidden'>
                             <video
                                 id="video"
                                 ref={videoEl}
-                                className=" !w-full object-cover video-js vjs-theme-city !h-[350px]"
+                                className=" !w-full object-cover video-js vjs-theme-city !h-[580px]"
                                 controls
                             // playsInline
 
@@ -282,11 +282,11 @@ const GoLive = () => {
 
                 <select name="user_id" value={form.user_id} onChange={handleChange} id="cars" className="text-xs bg-gray-700 focus:border-none border-0" >
                   <option value="">Select User</option>
-                  <option value="84">KENDRICK LAMAR</option>
-                  <option value="85">LIL NAS X</option>
-                  <option value="86">DRAKE</option>
-                  <option value="87">DOJA CAT</option>
-                  <option value="88">EMIWAY</option>
+                  <option value="90">KENDRICK LAMAR</option>
+                  <option value="91">LIL NAS X</option>
+                  <option value="92">DRAKE</option>
+                  <option value="93">DOJA CAT</option>
+                  <option value="94">EMIWAY</option>
                 </select>
 
               </div>

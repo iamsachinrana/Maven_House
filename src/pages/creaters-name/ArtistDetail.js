@@ -59,27 +59,27 @@ const ArtistDetail = () => {
   }
 
   const setBg = () => {
-    if (Number(id) === 84) {
+    if (Number(id) === 90) {
       profile = "/images/login/Kendrick.png";
       bg = '/images/creaters-name/kendrick.png';
       title = 'KENDRICK LAMAR KENDRICK LAMAR KENDRICK LAMAR';
     }
-    if (Number(id) === 85) {
+    if (Number(id) === 91) {
       profile = "/images/login/Lil-Nas-x.png";
       bg = '/images/creaters-name/lil.png';
       title = 'LIL NAS X LIL NAS X LIL NAS X';
     }
-    if (Number(id) === 86) {
+    if (Number(id) === 92) {
       profile = "/images/login/DRAKE.png";
       bg = '/images/creaters-name/drake.png';
       title = 'DRAKE DRAKE DRAKE DRAKE DRAKE';
     }
-    if (Number(id) === 87) {
+    if (Number(id) === 93) {
       profile = "/images/login/DOJA-CAT.png";
       bg = '/images/creaters-name/doja.png';
       title = 'DOJA CAT DOJA CAT DOJA CAT DOJA CAT';
     }
-    if (Number(id) === 88) {
+    if (Number(id) === 94) {
       profile = "/images/login/Emiway-Bantai.png";
       bg = '/images/creaters-name/emiway.png';
       title = 'EMIWAY EMIWAY EMIWAY EMIWAY EMIWAY';
@@ -115,7 +115,7 @@ const ArtistDetail = () => {
                   front porch overlooking Los Angeles. This all new comedy routine is his third w/ director
                   Mart...</p>
                 <button className="mt-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={checkOut}>Buy Ticket Now</button>
-                <button className="mt-3 ml-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push(`/artist-detail/${id}/live`)}>Live Now</button>
+                <button className="mt-3 ml-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push(`/artist-detail/${id}/live`)}>Join The Event</button>
               </div>
             </div>
             <div className="right-side  w-72 mt-16 md:mt-0 md:absolute -bottom-3 right-0 ">
