@@ -12,34 +12,38 @@ const LoginWallet = () => {
 
     useEffect(() => {
         const $ = window.$;
-        $('.owl-carousel').owlCarousel({
-            // loop: true,
-            // autoplay: true,
-            // autoplayTimeout: 5000,
-            margin: 10,
-            responsiveClass: true,
-            dots: false,
-            navText: ["<i class='fa fa-arrow-left'></i>", "<i class='fa fa-arrow-right'></i>"],
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                600: {
-                    items: 2,
-                },
-                992: {
-                    items: 3
-                },
-                1000: {
-                    items: 3,
-                },
-                1240: {
-                    items: 5,
-                }
+        try {
+            $('.owl-carousel').owlCarousel({
+                // loop: true,
+                // autoplay: true,
+                // autoplayTimeout: 5000,
+                margin: 10,
+                responsiveClass: true,
+                dots: false,
+                navText: ["<i class='fa fa-arrow-left'></i>", "<i class='fa fa-arrow-right'></i>"],
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    600: {
+                        items: 2,
+                    },
+                    992: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 3,
+                    },
+                    1240: {
+                        items: 5,
+                    }
 
-            }
-        });
-    })
+                }
+            });
+        } catch (e) {
+            console.log('Rendering error', e);
+        }
+    }, []);
 
     const goNextPage = (index) => {
         if (index == 0) {
@@ -63,7 +67,7 @@ const LoginWallet = () => {
                 <header className="px-4 text-white login-header">
                     <div className="owl-carousel owl-theme relative" >
                         {singerImage.map((item, index) => (
-                            <div className="item" onClick={() => history.push(`/artist-detail/${item.id}`)}>
+                            <div className="item" onClick={() => window.open(`/artist-detail/${item.id}`, '_blank')}>
                                 <div className="slider-wrapper h-">
                                     <img src={item?.imgpath} alt="" />
                                     <div className="slider-wrapper-content justify-center  flex flex-col gap-2">

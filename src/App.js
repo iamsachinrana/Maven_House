@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { HIDE_TOAST } from "@redux/action/actionConstants";
+import { hideToast } from "@redux/action";
 // import {showToast} from "@redux/action"
 import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,18 +37,16 @@ import Creator from './pages/Creator/Creator';
 import CreatorNavbar from './components/layout/CreatorNavbar';
 import Cookies from 'js-cookie';
 import ArtistDetail from './pages/creaters-name/ArtistDetail';
+import LiveStream from './pages/LiveStream/LiveStream';
 
 
 
 function CustomSnackBar({ type, message }) {
-
-
   const toast = useToast();
   return toast({
     title: message,
-    // description: "We've created your account for you.",
     status: type,
-    duration: 6000,
+    duration: 2000,
     isClosable: true,
   })
 }
@@ -66,8 +64,11 @@ const Routes = ({ }) => {
   const { isWalletOpen } = useSelector((state) => state.walletModalReducer);
 
   useEffect(() => {
+    dispatch(hideToast());
     window.scrollTo(0, 0)
   }, [location.pathname])
+
+  console.log(isVisible)
 
   return (
     <>
@@ -89,6 +90,7 @@ const Routes = ({ }) => {
         <Route path={'/faq'} exact component={Faq} />
         <Route path={'/go-live'} exact component={GoLive} />
         <Route path={'/artist-detail/:id'} exact component={ArtistDetail} />
+        <Route path={'/artist-detail/:id/live'} exact component={LiveStream} />
         <Route path={'/lil-nas-x'} exact component={Lil_Nas_X} />
         <Route path={'/drake'} exact component={Drake} />
         <Route path={'/doja-cat'} exact component={Doja_Cat} />

@@ -39,6 +39,7 @@ export default function CreateEvent0({ form, handleChange }) {
                 <label className="text-sm tablet:text-md" for="eventtype">Event Type</label>
 
                 <select name="eventType" id="cars" value={form.eventType} onChange={handleChange} className="text-xs bg-gray-700 focus:border-none border-0" >
+                <option value="">Select Event Type</option>
                   <option value="volvo">Volvo</option>
                   <option value="saab">Saab</option>
                   <option value="opel">Opel</option>
@@ -50,6 +51,7 @@ export default function CreateEvent0({ form, handleChange }) {
                 <label className="text-sm tablet:text-md" for="eventcategory">Event Category</label>
 
                 <select name="eventCategory" value={form.eventCategory} onChange={handleChange} id="cars" className="text-xs bg-gray-700 focus:border-none border-0" >
+                  <option value="">Select Category</option>
                   <option value="volvo">Volvo</option>
                   <option value="saab">Saab</option>
                   <option value="opel">Opel</option>
@@ -57,6 +59,23 @@ export default function CreateEvent0({ form, handleChange }) {
                 </select>
 
               </div>
+
+              <div className="flex col-span-2 tablet:col-span-1 relative flex-col">
+                <label for="birthday" className="text-sm tablet:text-md" >Start Event Date</label>
+                <input type="date" name="start_date" value={form.start_date} onChange={handleChange} placeholder="When will the event take place"
+                  className="text-xs bg-gray-700 focus:border-none border-0" />
+                {/* <div className=" absolute top-8 right-2 flex items-center"> <img className=" w-[16px] "
+                                                src="/images/createevent/calendar.png" /> </div> */}
+              </div>
+
+              <div className="flex col-span-2 tablet:col-span-1 relative flex-col">
+                <label for="birthday" className="text-sm tablet:text-md" >End Event Date</label>
+                <input type="date" name="end_date" value={form.end_date} onChange={handleChange} placeholder="When will the event take place"
+                  className="text-xs bg-gray-700 focus:border-none border-0" />
+                {/* <div className=" absolute top-8 right-2 flex items-center"> <img className=" w-[16px] "
+                                                src="/images/createevent/calendar.png" /> </div> */}
+              </div>
+
               <div className="flex  col-span-2 tablet:col-span-1 relative flex-col">
                 <label className="text-sm tablet:text-md" for="">Ticket Amount</label>
                 <input type="number" name='ammount' value={form.ammount} onChange={handleChange} placeholder="Price of one ticket"
@@ -65,13 +84,7 @@ export default function CreateEvent0({ form, handleChange }) {
                 <div className=" absolute top-8 right-2 flex gap-2 text-sm border-l items-center border-gray-600 "> <img
                   className="ml-2 h-4 w-4" src="/images/createevent/polygon.png" /> <div className="text-gray-400">MATIC</div> </div>
               </div>
-              <div className="flex col-span-2 tablet:col-span-1 relative flex-col">
-                <label for="birthday" className="text-sm tablet:text-md" >Date of Event</label>
-                <input type="date" name="date" value={form.date} onChange={handleChange} placeholder="When will the event take place"
-                  className="text-xs bg-gray-700 focus:border-none border-0" />
-                {/* <div className=" absolute top-8 right-2 flex items-center"> <img className=" w-[16px] "
-                                                src="/images/createevent/calendar.png" /> </div> */}
-              </div>
+
               <div className="flex col-span-2 tablet:col-span-1 flex-col">
                 <label className="text-sm tablet:text-md" for="">Total Tickets</label>
                 <input type="number" name='ticket' value={form.ticket} onChange={handleChange} placeholder="Total seats for the event"

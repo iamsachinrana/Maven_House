@@ -7,19 +7,22 @@ import CreateEvent1 from './CreateEvent1';
 import CreateEvent2 from './CreateEvent2';
 import CreateEvent3 from './CreateEvent3';
 import CreateEvent4 from './CreateEvent4';
-import { getMultipleImageUrl, postReq } from '../../utils/ApiHandler';
-
+import { getMultipleImageUrl, postApiReq, postReq } from '../../utils/ApiHandler';
+import Loader from '../../../src/components/Loader/index'
+import { useDispatch } from 'react-redux';
+import { showToast } from '../../redux/action';
 const initialState = {
     eventName: '',
     eventType: "",
     eventCategory: "",
     ammount: "",
-    date: '',
+    start_date: "",
+    end_date: '',
     ticket: '',
     shortDescription: '',
     longDescription: '',
     ticketImage: '',
-    gallaryImage: [],
+    gallaryImage: '',
     youtube: '',
     hostingEvent: '',
     eventLocation: ''
@@ -28,9 +31,10 @@ const initialState = {
 const CreateEvent = () => {
     const history = useHistory();
     const $ = window.$
+    const dispatch = useDispatch();
     const [form, setForm] = useState(initialState);
     const [step, setStep] = useState(1);
-
+    const [isLoading, setIsLoading] = useState(false);
     const changeSteps = () => {
         setStep(step + 1);
     }
@@ -104,7 +108,8 @@ const CreateEvent = () => {
             "type": form.eventType,
             "category": form.eventCategory,
             "ticket_amount": Number(form.ammount),
-            "date": form.date,
+            "start_date": form.start_date,
+            "end_date": form.end_date,
             "total_tickets": Number(form.ticket),
             "short_description": form.shortDescription,
             "long_description": form.longDescription,
@@ -114,16 +119,27 @@ const CreateEvent = () => {
             "host": form.hostingEvent,
             "location": form.eventLocation
         }
-        postReq('/user/event', data).then((res) => {
+        setIsLoading(true);
+        postApiReq('/user/create-event', data).then((res) => {
             if (res.status) {
-                console.log(res);
+                if (res?.data?.data) {
+                    dispatch(showToast({ type: 'success', message: 'Create event sucessfully.' }));
+                    history.push('/creator');
+                    setIsLoading(false);
+                }
+                else {
+                    dispatch(showToast({ type: 'error', message: res?.data?.message }))
+                }
+            }
+            else {
+                dispatch(showToast({ type: 'error', message: res?.data?.message }))
             }
         })
     }
 
-    console.log(form, 'form')
     return (
         <>
+            <Loader isLoading={isLoading} />
             <div>
                 <header className=" px-4">
 

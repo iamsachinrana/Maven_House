@@ -4,7 +4,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { magic } from "@utils/constants";
 import Cookies from 'js-cookie';
 import { useAriaHidden } from '@chakra-ui/react';
-import { openWalletModal } from '../../redux/action';
+import { openWalletModal, setWalletId, showToast } from '../../redux/action';
 import { useDispatch } from 'react-redux';
 import Web3 from "web3";
 
@@ -14,10 +14,21 @@ const Navbar = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     // let user = Cookies.get('user-data');
-    let user = Cookies.get('user');
+    let user = Cookies.get('user-data');
     let userType = Cookies.get('user-type');
     userType = userType ? JSON.parse(userType) : userType;
     const [account, setAccount] = useState('');
+
+    useEffect(() => {
+        (async () => {
+            if (user) {
+                let publicAddress = (await web3.eth.getAccounts())[0];
+                if (publicAddress) {
+                    dispatch(setWalletId(publicAddress));
+                }
+            }
+        })()
+    }, [])
 
 
     const sendTransaction = async () => {
@@ -80,11 +91,11 @@ const Navbar = () => {
             Cookies.remove('user-type')
         }
         else {
-            Cookies.remove('user');
+            Cookies.remove('user-data');
             Cookies.remove('user-type')
             history.push('/')
         }
-        Cookies.remove('user');
+        Cookies.remove('user-data');
         Cookies.remove('user-type')
     };
 

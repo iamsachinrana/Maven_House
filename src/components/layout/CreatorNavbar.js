@@ -1,24 +1,50 @@
 import React, { useEffect, useState } from 'react'
+import ENV from "@utils/env";
 import { BsFillCameraVideoFill, BsPersonCircle } from 'react-icons/bs';
 import { NavLink, useHistory } from 'react-router-dom';
-import { magic } from "@utils/constants";
+import { Magic } from "magic-sdk";
 import Cookies from 'js-cookie';
 import { useAriaHidden } from '@chakra-ui/react';
-import { openWalletModal } from '../../redux/action';
+import { openWalletModal, closeWalletModal, setWalletId, showToast } from '../../redux/action';
 import { useDispatch } from 'react-redux';
+import { ConnectExtension } from "@magic-ext/connect";
+import { getReq, postReq } from "../../utils/ApiHandler";
+
 import Web3 from "web3";
 
+const maticNodeOption = {
+  rpcUrl: ENV.MAGIC_URL_CUSTOM, // Polygon RPC URL
+  chainId: ENV.MAGIC_CHAIN_ID, // Polygon chain id
+}
+const magic = new Magic(ENV.MAGIC_KEY, {
+  network: maticNodeOption,
+  locale: "en_US",
+  extensions: [new ConnectExtension()]
+});
 const web3 = new Web3(magic.rpcProvider);
+
 const CreatorNavbar = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [loginUser, setLoginUser] = useState(null);
   const history = useHistory();
   const dispatch = useDispatch();
   // let user = Cookies.get('user-data');
-  let user = Cookies.get('user');
+  let user = Cookies.get('user-data');
   let userType = Cookies.get('user-type');
   userType = userType ? JSON.parse(userType) : userType;
   const [account, setAccount] = useState('');
 
+
+  useEffect(() => {
+    (async () => {
+      if (user) {
+        let publicAddress = (await web3.eth.getAccounts())[0];
+        if (publicAddress) {
+          dispatch(setWalletId(publicAddress));
+        }
+      }
+    })()
+  }, [])
 
   const sendTransaction = async () => {
     const publicAddress = (await web3.eth.getAccounts())[0];
@@ -43,14 +69,97 @@ const CreatorNavbar = () => {
 
 
   const login = async () => {
+
+    // web3.eth
+    //   .getAccounts()
+    //   .then((accounts) => {
+    //     console.log(accounts)
+    //     setAccount(accounts?.[0]);
+    //     Cookies.set('user', accounts[0]);
+    //     Cookies.set('user-type', JSON.stringify({ type: 'creator' }));
+    //     history.push('/creator')
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
+
     web3.eth
       .getAccounts()
       .then((accounts) => {
-        console.log(accounts)
+        let _account = accounts?.[0]
         setAccount(accounts?.[0]);
-        Cookies.set('user', accounts[0]);
-        Cookies.set('user-type', JSON.stringify({ type: 'creator' }));
-        history.push('/creator')
+        /*Authenticating Message*/
+        getReq(`/user/authenticate/${_account}`)
+          .then(async (authResponse) => {
+            if (authResponse.status) {
+              console.log('authResponse.data.consent', authResponse);
+              const signedMessage = await web3.eth.personal
+                .sign(`${authResponse.data?.data?.consent}`, _account, "")
+                .catch((e) => console.log(e));
+
+              if (signedMessage) {
+                dispatch(closeWalletModal());
+                postReq(`/user/authenticate`, {
+                  address: _account,
+                  signature: signedMessage,
+                })
+                  .then((authTokenRes) => {
+                    authTokenRes = authTokenRes?.data;
+                    if (authTokenRes.status) {
+
+                      // console.log(accounts)
+                      Cookies.set('user-data', authTokenRes.data.token);
+                      Cookies.set('user-type', JSON.stringify({ type: 'creator' }));
+                      Cookies.set(
+                        "user-data",
+                        authTokenRes.data.token,
+                        { expires: 1 }
+                      );
+                      dispatch(
+                        showToast({
+                          type: "success",
+                          message: "Metamask Wallet Connected",
+                        })
+                      );
+                      // history.push(`${queryParam?.referrer || '/'}`);
+                      history.push('/creator')
+                      dispatch(setWalletId(_account));
+                      setIsLoading(false);
+                    } else {
+                      dispatch(
+                        showToast({
+                          type: "error",
+                          message: authTokenRes.error,
+                        })
+                      );
+                      setIsLoading(false);
+                    }
+                  })
+                  .catch((e) => {
+                    setIsLoading(false);
+                    dispatch(
+                      showToast({
+                        type: "error",
+                        message: e?.authResponse?.data,
+                      })
+                    );
+                  });
+              }
+
+            } else {
+              setIsLoading(false);
+              dispatch(
+                showToast({ type: "error", message: authResponse.error })
+              );
+            }
+          })
+          .catch((e) => {
+            setIsLoading(false);
+            dispatch(
+              showToast({ type: "error", message: e?.authResponse?.data })
+            );
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -76,7 +185,7 @@ const CreatorNavbar = () => {
       console.log(e);
     });
     // Cookies.remove('user-data');
-    Cookies.remove('user');
+    Cookies.remove('user-data');
     Cookies.remove('user-type');
     history.push('/creator')
   };

@@ -10,8 +10,12 @@ import { ConnectExtension } from "@magic-ext/connect";
 import ENV from "@utils/env";
 import Web3 from "web3";
 
+const maticNodeOption = {
+  rpcUrl: ENV.MAGIC_URL_CUSTOM, // Polygon RPC URL
+  chainId: ENV.MAGIC_CHAIN_ID, // Polygon chain id
+}
 const magic = new Magic(ENV.MAGIC_KEY, {
-  network: ENV.MAGIC_NETWORK,
+  network: maticNodeOption,
   locale: "en_US",
   extensions: [new ConnectExtension()]
 });
@@ -35,9 +39,9 @@ const ConnectWalletPopup = ({ isOpen, onClose }) => {
         getReq(`/user/authenticate/${_account}`)
           .then(async (authResponse) => {
             if (authResponse.status) {
-
+              console.log('authResponse.data.consent', authResponse);
               const signedMessage = await web3.eth.personal
-                .sign(`${authResponse.data.consent}`, _account, "")
+                .sign(`${authResponse.data?.data?.consent}`, _account, "")
                 .catch((e) => console.log(e));
 
               if (signedMessage) {
@@ -47,9 +51,10 @@ const ConnectWalletPopup = ({ isOpen, onClose }) => {
                   signature: signedMessage,
                 })
                   .then((authTokenRes) => {
+                    authTokenRes = authTokenRes?.data;
                     if (authTokenRes.status) {
                       Cookies.set(
-                        "user",
+                        "user-data",
                         authTokenRes.data.token,
                         { expires: 1 }
                       );

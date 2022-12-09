@@ -148,3 +148,46 @@ export const getReq = async (url) => {
       }
     });
 }
+
+export const getStreamStatus = (apiKey, streamId) => {
+  const authorizationHeader = {
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${apiKey}`,
+    },
+  };
+
+  try {
+    const createStreamResponse = axios.post(
+      `${ENV.BASE_URL}/user/get-stream`,
+      {
+        api_key: apiKey,
+        stream_id: streamId,
+      },
+      {
+        headers: {
+          "content-type": "application/json",
+          authorization: authorizationHeader.headers.authorization, // API Key needs to be passed as a header
+        },
+      }
+    );
+
+    return createStreamResponse;
+    if (createStreamResponse) {
+      return { data: createStreamResponse };
+      // res.statusCode = 200;
+      // res.json({ ...createStreamResponse.data });
+    } else {
+      // res.statusCode = 500;
+      // res.json({ error: "Something went wrong" });
+    }
+  } catch (error) {
+    // res.statusCode = 500;
+
+    // Handles Invalid API key error
+    if (error.response.status === 403) {
+      // res.statusCode = 403;
+    }
+    // res.json({ error });
+  }
+};

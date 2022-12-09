@@ -97,6 +97,17 @@ h2 {
   .artfont{
     @apply text-[48px];
   }
+  .live-show video{
+    height: 550px !important;
+    width: 100% !important;
+    object-fit: cover;
+  }
+  .go-live video{
+    height: 350px !important;
+    width: 100% !important;
+    object-fit: cover;
+
+  }
 
 }
 @layer utilities  {

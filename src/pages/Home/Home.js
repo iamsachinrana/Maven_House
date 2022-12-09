@@ -35,7 +35,7 @@ const HomePage = () => {
             }
         });
 
-    })
+    },[])
 
     return (
         <div className=''>

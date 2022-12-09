@@ -46,6 +46,7 @@ const CreateEvent3 = ({ form, handleChange }) => {
                                     <div className="flex relative flex-col">
                                         <label className="text-sm tablet:text-md" for="eventlocation">Event Location</label>
                                         <select name="eventLocation" value={form.eventLocation} onChange={handleChange} id="cars" className="text-xs bg-gray-700 focus:border-none border-0" >
+                                            <option value="">Select Location</option>
                                             <option value="volvo">Volvo</option>
                                             <option value="saab">Saab</option>
                                             <option value="opel">Opel</option>
