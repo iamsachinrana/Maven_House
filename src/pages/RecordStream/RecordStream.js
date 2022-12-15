@@ -18,7 +18,7 @@ function usePrevious(value) {
     return ref.current;
 }
 
-const LiveStream = () => {
+const RecordStream = () => {
     const [popup, setPopup] = useState(true);
     const { id } = useParams();
     console.log(id, 'params id');
@@ -56,20 +56,10 @@ const LiveStream = () => {
 
 
 
-
-    let prevStatus = usePrevious(activeStatus);
-    useEffect(() => {
-        console.log(prevStatus?.activeStatus, activeStatus, 'disconnect')
-        if (prevStatus?.activeStatus !== activeStatus) {
-            setVideoStarted(false);
-        }
-    }, [activeStatus])
-
-
     const onClose = () => {
         setPopup(false);
     }
-    console.log('walletId', walletId, 'eventData', eventData);
+   
     return (
         <>
             <div className='container' >
@@ -84,8 +74,8 @@ const LiveStream = () => {
                             {liveEvent?.name}
                         </h1>
                         <div data-vjs-player className='w-full h-full ![&>video]:h-[550px] ![&>:not(video)]:hidden'>
-                        <Player
-                                title="Agent 327: Operation Barbershop"
+                            <Player
+                                title={liveEvent.name}
                                 playbackId= {liveEvent.playback_id}
                                 showPipButton
                                 loop
@@ -100,9 +90,9 @@ const LiveStream = () => {
                                 className={`animate-pulse ${streamIsActive ? "bg-green-700" : "bg-yellow-600"
                                     } h-2 w-2 mr-2 rounded-full`}
                             ></div>
-                           
+                            {streamIsActive && activeStatus? "Live" : "Waiting for Video"}
                         </div>
-                        <div className="right-side  w-72 absolute bottom-2 right-2" style={{zIndex: 100}}>
+                        <div className="right-side  w-72 absolute bottom-2 right-2">
                             <div className="flex gap-2 relative">
                                 <div className=" w-6 rounded-full absolute bottom-0  font-semibold h-6 text-[#05343a] flex items-center justify-center  bg-[#A5EFF8] text-xs" >j</div>
                                 <div className="w-64 absolute right-0 bottom-0 backdrop-blur-md text-sm rounded-2xl p-2 bg-[#57506928]"><span className="text-[#A5EFF8] font-semibold">just:</span> Hello everyone,hope everyone's ready for the show!!</div>
@@ -121,4 +111,4 @@ const LiveStream = () => {
     )
 }
 
-export default LiveStream;
+export default RecordStream;

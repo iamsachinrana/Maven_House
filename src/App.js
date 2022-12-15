@@ -38,8 +38,27 @@ import CreatorNavbar from './components/layout/CreatorNavbar';
 import Cookies from 'js-cookie';
 import ArtistDetail from './pages/creaters-name/ArtistDetail';
 import LiveStream from './pages/LiveStream/LiveStream';
+import RecordStream from './pages/RecordStream/RecordStream';
+import {
+  LivepeerConfig,
+  createReactClient,
+  studioProvider,
+} from '@livepeer/react';
 
 
+const client = createReactClient({
+  provider: studioProvider({ apiKey: 'deacd5f8-0f20-41fa-ada9-c616be3b8323' }),
+});
+
+const livepeerTheme = {
+  colors: {
+    accent: 'rgb(0, 145, 255)',
+    containerBorderColor: 'rgba(0, 145, 255, 0.9)',
+  },
+  fonts: {
+    display: 'Inter',
+  },
+};
 
 function CustomSnackBar({ type, message }) {
   const toast = useToast();
@@ -75,31 +94,29 @@ const Routes = ({ }) => {
       {isVisible && <CustomSnackBar type={type} message={message} />}
       {location.pathname === '/go-live' || location.pathname === '/creator' || location.pathname === '/create-event' || userType?.type === 'creator' ? <CreatorNavbar /> : <Navbar />}
 
+      <LivepeerConfig client={client} theme={livepeerTheme}>
+        <Switch>
+          <Route path={'/home'} exact component={Home} />
+          <Route path={'/'} exact component={LoginWallet} />
+          <Route path={'/magic-login'} exact component={MagicLogin} />
+          <Route path={'/ticket'} exact component={Ticket} />
+          <Route path={'/checkout'} exact component={Checkout} />
+          <Route path={'/create-event'} exact component={CreateEvent} />
+          <Route path={'/faq'} exact component={Faq} />
+          <Route path={'/go-live'} exact component={GoLive} />
+          <Route path={'/artist-detail/:id'} exact component={ArtistDetail} />
+          <Route path={'/artist-detail/:id/live'} exact component={LiveStream} />
+          <Route path={'/artist-detail/:id/record'} exact component={RecordStream} />
+          <Route path={'/lil-nas-x'} exact component={Lil_Nas_X} />
+          <Route path={'/drake'} exact component={Drake} />
+          <Route path={'/doja-cat'} exact component={Doja_Cat} />
+          <Route path={'/emiway'} exact component={Emiway} />
+          <Route path={'/about'} export component={About} />
+          <Route path={'/creator'} export component={Creator} />
+          <Route path={"/dashboard"} render={(props) => <DashboardRoutes {...props} />} />
 
-      <Switch>
-        <Route path={'/home'} exact component={Home} />
-        <Route path={'/'} exact component={LoginWallet} />
-        <Route path={'/magic-login'} exact component={MagicLogin} />
-        <Route path={'/ticket'} exact component={Ticket} />
-        <Route path={'/checkout'} exact component={Checkout} />
-        <Route path={'/create-event'} exact component={CreateEvent} />
-        <Route path={'/create-event1'} exact component={CreateEvent1} />
-        <Route path={'/create-event2'} exact component={CreateEvent2} />
-        <Route path={'/create-event3'} exact component={CreateEvent3} />
-        <Route path={'/create-event4'} exact component={CreateEvent4} />
-        <Route path={'/faq'} exact component={Faq} />
-        <Route path={'/go-live'} exact component={GoLive} />
-        <Route path={'/artist-detail/:id'} exact component={ArtistDetail} />
-        <Route path={'/artist-detail/:id/live'} exact component={LiveStream} />
-        <Route path={'/lil-nas-x'} exact component={Lil_Nas_X} />
-        <Route path={'/drake'} exact component={Drake} />
-        <Route path={'/doja-cat'} exact component={Doja_Cat} />
-        <Route path={'/emiway'} exact component={Emiway} />
-        <Route path={'/about'} export component={About} />
-        <Route path={'/creator'} export component={Creator} />
-        <Route path={"/dashboard"} render={(props) => <DashboardRoutes {...props} />} />
-
-      </Switch>
+        </Switch>
+      </LivepeerConfig>
       {(location.pathname === '/' || location.pathname === '/about' || location.pathname === '/faq' || location.pathname === '/create-event') && <Footer />}
       {isWalletOpen && (
         <ConnectWalletPopup

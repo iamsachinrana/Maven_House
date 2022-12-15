@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { getApiReq } from '../../utils/ApiHandler';
-
+import { Player } from "@livepeer/react";
 
 
 const ArtistDetail = () => {
@@ -10,6 +10,8 @@ const ArtistDetail = () => {
   const { id } = useParams();
   const history = useHistory();
   const [image, setImage] = useState();
+  const [teaserPlaybackId,setTeaserPlaybackId] = useState(false);
+  const [showPopup,setShowPopup] = useState(false);
 
   let bg, title, profile;
   useEffect(() => {
@@ -58,6 +60,22 @@ const ArtistDetail = () => {
     window.unlockProtocol && window.unlockProtocol.loadCheckoutModal();
   }
 
+  const openVideoPopup = (id)=>{
+    getApiReq(`/user/artist/${id}`).then(async(response)=>{
+      if(response.status){
+        let {data} = response?.data;
+        if(data.length>0){
+          data = data[0];
+          console.log(data);
+          setShowPopup(true);
+          setTeaserPlaybackId(data?.teaser_playback);
+        }
+      }
+      else{
+        console.log(response?.data?.error);
+      }
+    })
+  }
   const setBg = () => {
     if (Number(id) === 90) {
       profile = "/images/login/Kendrick.png";
@@ -116,6 +134,9 @@ const ArtistDetail = () => {
                   Mart...</p>
                 <button className="mt-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={checkOut}>Buy Ticket Now</button>
                 <button className="mt-3 ml-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push(`/artist-detail/${id}/live`)}>Join The Event</button>
+                {/* <button className="mt-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push(`/artist-detail/${id}/record`)}>Watch the Records</button> */}
+                <button className="mt-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="button" onClick={(e)=>openVideoPopup(id)}>Watch the teaser</button>
+
               </div>
             </div>
             <div className="right-side  w-72 mt-16 md:mt-0 md:absolute -bottom-3 right-0 ">
@@ -132,6 +153,27 @@ const ArtistDetail = () => {
           </div>
         </header>
       </div>
+      { (showPopup) &&
+          <div
+          id="backdrop"
+          className="fixed top-0 right-0 left-0 z-[1000] grid place-items-center min-h-screen backdrop-blur-[3px] p-[10px]"
+      >
+          <div className="max-w-[450px] bg-white rounded-[15px] shadow4 p-8 w-full" style={{position:'relative',cursor:'pointer'}}>
+              <div className="w-full flex justify-center">
+                  <Player
+                      title='Watch the teacher'
+                      playbackId= {teaserPlaybackId}
+                      showPipButton
+                      loop
+                      autoPlay
+                      showTitle={false}
+                      muted
+                  />
+              </div>
+              <div style={{position:'absolute', right:'10px', top: '10px'}} class="border-circle" onClick={(e)=>{ setShowPopup(false); setTeaserPlaybackId(''); }}>x</div>
+          </div>
+      </div>
+      }
     </div >
   )
 }
