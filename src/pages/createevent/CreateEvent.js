@@ -82,20 +82,30 @@ const CreateEvent = () => {
 
     const handleFileUpload = async (e)=>{
         const file = e.target.files[0];
-        try{
-            axios({
-                method:'PUT',
-                url : assetUploadUrl?.url,
-                data:file,
-                header:{
-                    'content-type':'video/mp4'
-                }
-            }).then(async(response)=>{
-                if(response.status){
-                    console.log(`assetUploadUrl`,assetUploadUrl);
-                    setForm({...form, teaser_playback:assetUploadUrl?.asset?.playbackId})
-                }
-            })
+        try {
+            const data = new FormData();
+
+            data.append('asset', file);
+
+            const { status, data: response, error } = await postReq('/user/upload-to-ipfs', data);
+            console.log(response);
+            if (status) {
+                setForm({ ...form, teaser_playback: response.cid });
+            }
+            // console.log(response);
+            // axios({
+            //     method:'POST',
+            //     url : assetUploadUrl?.url,
+            //     data:file,
+            //     header:{
+            //         'content-type':'video/mp4'
+            //     }
+            // }).then(async(response)=>{
+            //     if(response.status){
+            //         console.log(`assetUploadUrl`,assetUploadUrl);
+            //         setForm({...form, teaser_playback:assetUploadUrl?.asset?.playbackId})
+            //     }
+            // })
         }catch(e){
             console.log("Error upload",e);
         }

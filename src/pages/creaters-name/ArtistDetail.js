@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect , useMemo} from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { getApiReq } from '../../utils/ApiHandler';
 import { Player } from "@livepeer/react";
+import { parseArweaveTxId, parseCid } from 'livepeer/media';
 
 
 const ArtistDetail = () => {
@@ -10,8 +11,11 @@ const ArtistDetail = () => {
   const { id } = useParams();
   const history = useHistory();
   const [image, setImage] = useState();
-  const [teaserPlaybackId,setTeaserPlaybackId] = useState(false);
-  const [showPopup,setShowPopup] = useState(false);
+  const [teaserPlaybackId,setTeaserPlaybackId] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+
+  const teaserPlaybackIdParsed = useMemo(() => parseCid(teaserPlaybackId) ?? parseArweaveTxId(teaserPlaybackId), [teaserPlaybackId]);
+
 
   let bg, title, profile;
   useEffect(() => {
@@ -68,7 +72,10 @@ const ArtistDetail = () => {
           data = data[0];
           console.log(data);
           setShowPopup(true);
-          setTeaserPlaybackId(data?.teaser_playback);
+          if (data?.teaser_playback) {
+          setTeaserPlaybackId(`ipfs://${data?.teaser_playback}`);   
+          }
+
         }
       }
       else{
@@ -153,7 +160,7 @@ const ArtistDetail = () => {
           </div>
         </header>
       </div>
-      { (showPopup) &&
+      { (showPopup && teaserPlaybackIdParsed) &&
           <div
           id="backdrop"
           className="fixed top-0 right-0 left-0 z-[1000] grid place-items-center min-h-screen backdrop-blur-[3px] p-[10px]"
@@ -161,13 +168,12 @@ const ArtistDetail = () => {
           <div className="max-w-[450px] bg-white rounded-[15px] shadow4 p-8 w-full" style={{position:'relative',cursor:'pointer'}}>
               <div className="w-full flex justify-center">
                   <Player
-                      title='Watch the teacher'
-                      playbackId= {teaserPlaybackId}
-                      showPipButton
-                      loop
-                      autoPlay
-                      showTitle={false}
-                      muted
+                    title='Watch the teaser'
+                    src={teaserPlaybackId}
+                    autoPlay
+                    muted
+                    autoUrlUpload={{ fallback: true, ipfsGateway: 'https://w3s.link' }}
+                    showTitle={false}
                   />
               </div>
               <div style={{position:'absolute', right:'10px', top: '10px'}} class="border-circle" onClick={(e)=>{ setShowPopup(false); setTeaserPlaybackId(''); }}>x</div>
