@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Maven House
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Summary
 
-## Available Scripts
+Maven House is redefining virtual experiences by providing a platform for artists and creators to create, manage, and host live-stream events where they can connect with their fans globally.
 
-In the project directory, you can run:
+- Maven House is redefining virtual experiences
+  by providing a platform for artists and creators
+  to create, manage, and host live-stream events
+  where they can connect with their fans globally.
 
-### `npm start`
+- This gives artists complete control over their
+  performance and monetization while also
+  removing barriers for the audience.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Platform is able to handle traffic for an event of
+  any size, from anywhere in the world.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Inbuilt chat and voice call option
 
-### `npm test`
+## Overview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Maven House providing the paltform for creators to create their online events using polygon NFT's and Unlock Protocol.
 
-### `npm run build`
+Creator can stream their live events using easy to grab Maven House streamming interface and OBS Studio. Livepeer Protocol plays role of streamming partner and Maven House stream videos as decentalized streamming solution to provide cost effective streamming.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Maven House streamming for viewers is more authenticated using Token Gating architecture and streamming authentication of Livepeer's Playback Token. Maven House ensures creators streamming for only authenticated viewers. Application use Livepeer's Player library for playing videos on web.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Maven House Go Live](https://github.com/MavenFoundation/Maven_House/blob/main/public/readme/go-live.png?raw=true)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To watch the event online, Viewer/Attendees need to buy the ticket and they can join the event using token authentication (Token Gating)
 
-### `npm run eject`
+![Maven House Token Gating](https://github.com/MavenFoundation/Maven_House/blob/main/public/readme/token-gating.png?raw=true)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Also, Attendees can watch the event teaser, which is uploaded on Filecoin/IPFS using web3.storage.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![teaser](https://github.com/MavenFoundation/Maven_House/blob/main/public/readme/teaser.png?raw=true)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Protocols Integration
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Livepeer Streamming - Online Events Streaming
 
-## Learn More
+- Livepeer Token Gating - Streaming Authentication
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Polygon NFT's - Event Ticketing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Filecoin/IPFS playback tool with Livepeer’s Player - Teaser video storage and playback
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##

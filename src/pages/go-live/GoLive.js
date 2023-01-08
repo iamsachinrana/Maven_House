@@ -154,11 +154,11 @@ const GoLive = () => {
 
                 <select name="user_id" value={form.user_id} onChange={handleChange} id="cars" className="text-xs bg-gray-700 focus:border-none border-0" >
                   <option value="">Select User</option>
-                  <option value="90">KENDRICK LAMAR</option>
-                  <option value="91">LIL NAS X</option>
-                  <option value="92">DRAKE</option>
-                  <option value="93">DOJA CAT</option>
-                  <option value="94">EMIWAY</option>
+                  <option value="98">KENDRICK LAMAR</option>
+                  <option value="99">LIL NAS X</option>
+                  <option value="100">DRAKE</option>
+                  <option value="101">DOJA CAT</option>
+                  <option value="102">EMIWAY</option>
                 </select>
 
               </div>
