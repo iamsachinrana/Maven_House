@@ -26,15 +26,15 @@ Creator can stream their live events using easy to grab Maven House streamming i
 
 Maven House streamming for viewers is more authenticated using Token Gating architecture and streamming authentication of Livepeer's Playback Token. Maven House ensures creators streamming for only authenticated viewers. Application use Livepeer's Player library for playing videos on web.
 
-![Maven House Go Live](https://github.com/[username]/[reponame]/blob/[branch]/public/readme/go-live.png?raw=true)
+![Maven House Go Live](https://github.com/MavenFoundation/Maven_House/blob/main/public/readme/go-live.png?raw=true)
 
 To watch the event online, Viewer/Attendees need to buy the ticket and they can join the event using token authentication (Token Gating)
 
-![Maven House Token Gating](https://github.com/[username]/[reponame]/blob/[branch]/public/readme/token-gating.png?raw=true)
+![Maven House Token Gating](https://github.com/MavenFoundation/Maven_House/blob/main/public/readme/token-gating.png?raw=true)
 
 Also, Attendees can watch the event teaser, which is uploaded on Filecoin/IPFS using web3.storage.
 
-![teaser](https://github.com/[username]/[reponame]/blob/[branch]/teaser.png?raw=true)
+![teaser](https://github.com/MavenFoundation/Maven_House/blob/main/public/readme/teaser.png?raw=true)
 
 ## Protocols Integration
 
