@@ -11,6 +11,8 @@ import { getMultipleImageUrl, postApiReq, postReq } from '../../utils/ApiHandler
 import Loader from '../../../src/components/Loader/index'
 import { useDispatch } from 'react-redux';
 import { showToast } from '../../redux/action';
+import axios from 'axios';
+
 const initialState = {
     eventName: '',
     eventType: "",
@@ -23,7 +25,7 @@ const initialState = {
     longDescription: '',
     ticketImage: '',
     gallaryImage: '',
-    youtube: '',
+    teaser_playback: '',
     hostingEvent: '',
     eventLocation: ''
 };
@@ -35,6 +37,7 @@ const CreateEvent = () => {
     const [form, setForm] = useState(initialState);
     const [step, setStep] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
+    const [assetUploadUrl,setAssetUploadUrl] = useState(false);
     const changeSteps = () => {
         setStep(step + 1);
     }
@@ -77,6 +80,38 @@ const CreateEvent = () => {
         }
     };
 
+    const handleFileUpload = async (e)=>{
+        const file = e.target.files[0];
+        try {
+            const data = new FormData();
+
+            data.append('asset', file);
+
+            const { status, data: response, error } = await postReq('/user/upload-to-ipfs', data);
+            console.log(response);
+            if (status) {
+                setForm({ ...form, teaser_playback: response.cid });
+            }
+            // console.log(response);
+            // axios({
+            //     method:'POST',
+            //     url : assetUploadUrl?.url,
+            //     data:file,
+            //     header:{
+            //         'content-type':'video/mp4'
+            //     }
+            // }).then(async(response)=>{
+            //     if(response.status){
+            //         console.log(`assetUploadUrl`,assetUploadUrl);
+            //         setForm({...form, teaser_playback:assetUploadUrl?.asset?.playbackId})
+            //     }
+            // })
+        }catch(e){
+            console.log("Error upload",e);
+        }
+       
+    }
+
     const handleBannerUpload = async (e) => {
         if (e.target.files && e.target.files.length > 0) {
             const { name, files } = e.target;
@@ -115,7 +150,7 @@ const CreateEvent = () => {
             "long_description": form.longDescription,
             "ticket_image": form.ticketImage,
             "gallery": form.gallaryImage,
-            "link": form.youtube,
+            "teaser_playback": form.teaser_playback,
             "host": form.hostingEvent,
             "location": form.eventLocation
         }
@@ -169,17 +204,19 @@ const CreateEvent = () => {
                         </div>
                     </div>
                     <div>
-                        {step == 1 ? <CreateEvent0 form={form}
+                        {step === 1 ? <CreateEvent0 form={form}
                             handleChange={handleChange} /> :
-                            step == 2 ? <CreateEvent1 form={form}
+                            step === 2 ? <CreateEvent1 form={form}
                                 handleChange={handleChange} /> :
-                                step == 3 ? <CreateEvent2 form={form}
+                                step === 3 ? <CreateEvent2 form={form}
                                     handleChange={handleChange}
                                     handleImageUpload={handleImageUpload}
-                                    handleBannerUpload={handleBannerUpload} /> :
-                                    step == 4 ? <CreateEvent3 form={form}
+                                    handleBannerUpload={handleBannerUpload} 
+                                    handleFileUpload={handleFileUpload}
+                                    setAssetUploadUrl={setAssetUploadUrl}/> :
+                                    step === 4 ? <CreateEvent3 form={form}
                                         handleChange={handleChange} /> :
-                                        step == 5 && <CreateEvent4 form={form}
+                                        step === 5 && <CreateEvent4 form={form}
                                             handleChange={handleChange} />}
                     </div>
                     <div className=" flex justify-center py-4 text-white gap-5 ">

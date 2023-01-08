@@ -7,6 +7,7 @@ import "videojs-contrib-quality-levels";
 import "videojs-hls-quality-selector";
 import { data } from 'autoprefixer';
 import ENV from '../../utils/env';
+import { Player } from "@livepeer/react";
 
 
 function usePrevious(value) {
@@ -59,140 +60,9 @@ const GoLive = () => {
     }
 
 
-    useEffect(() => {
-        let interval;
-        if (rowData?.stream_key) {
-            interval = setInterval(async () => {
-                const streamStatusResponse = await getStreamStatus(
-                    rowData?.api_key,
-                    rowData?.stream_id
-                );
-
-                if (streamStatusResponse.data) {
-                    console.log(videoEl);
-                    let { isActive } = streamStatusResponse.data?.data;
-                    setActiveStatus(isActive);
-                    if (isActive && (videoStarted == false || videoStarted == null)) {
-                        setVideoStarted(true);
-                    }
-                    else if (isActive == false && videoStarted == true) {
-                        if(isActive == false){
-                            history.push('/creator')
-                        }
-                        setVideoStarted(false);
-                    }
-                     
-                }
-            }, 5000);
-        }
-
-        return () => {
-            clearInterval(interval);
-        };
-    }, [rowData?.stream_key]);
-
-    let prevStatus = usePrevious(activeStatus);
-
-    useEffect(() => {
-        console.log(prevStatus?.activeStatus, activeStatus, 'disconnect')
-        if (prevStatus?.activeStatus !== activeStatus) {
-            setVideoStarted(false);
-        }
-    }, [activeStatus])
-
-
-    // const headers = JSON.stringify(
-    //     {
-    //         "content-type": "application/json",
-    //         authorization: `Bearer ${apiKey}`,
-    //     },
-    //     undefined,
-    //     2
-    // );
-    // const body = JSON.stringify(
-    //     {
-    //         name: "test_stream",
-    //         profiles: [
-    //             {
-    //                 name: "720p",
-    //                 bitrate: 2000000,
-    //                 fps: 30,
-    //                 width: 1280,
-    //                 height: 720,
-    //             },
-    //             {
-    //                 name: "480p",
-    //                 bitrate: 1000000,
-    //                 fps: 30,
-    //                 width: 854,
-    //                 height: 480,
-    //             },
-    //             {
-    //                 name: "360p",
-    //                 bitrate: 500000,
-    //                 fps: 30,
-    //                 width: 640,
-    //                 height: 360,
-    //             },
-    //         ],
-    //     },
-    //     undefined,
-    //     2
-    // );
-
-    // const response = JSON.stringify(
-    //     {
-    //         isActive: false,
-    //         streamKey: rowData?.stream_key,
-    //         playbackId: rowData?.playbackId,
-    //     },
-    //     undefined,
-    //     2
-    // );
-
-
-
-
-    useEffect(() => {
-        if (videoEl == null) return;
-
-        if (streamIsActive && rowData?.playback_id) {
-
-            const player = videojs(videoEl.current, {
-                autoplay: true,
-                controls: true,
-                sources: [
-                    {
-                        src: `https://livepeercdn.studio/hls/${rowData?.playback_id}/index.m3u8`,
-                    },
-                ],
-            });
-
-            // player?.hlsQualitySelector();
-
-            player.on("error", () => {
-                alert('error');
-                player.src(`https://livepeercdn.studio/hls/${rowData?.playback_id}/index.m3u8`);
-            });
-        }
-    }, [videoStarted]);
-
     return (
         <div className='h-sc' >
-            {/* <div className="login-navbar">
-                <nav className=" center-b  flex-col tablet:h-20 tablet:flex-row  text-white  py-2 tablet:py-0 px-4  ">
-                    <div className="">
-                        <NavLink to="">
-                            <img src="/images/navbar/maven.png" alt="" srcset="" /></NavLink>
-                    </div>
-                    <ul className="center gap-2 sm:gap-4 pt-3 tablet:pt-0">
-                        <li><a className="px-1 sm:px-3 py-1 center  rounded-3xl border border-gray-600 group text-black font-semibold bg-[#fff]" href="">Go Live <BsFillCameraVideoFill size={25} className="text-[#54D12F] group-hover:text-[#eab308] pl-2" /></a></li>
-
-                        <li><a href="">Create Event</a></li>
-                        <li> <div className="w-8 cursor-pointer outline-4  outline-[#3E4046] border border-white h-8 bg-[#9B9B9B] rounded-full  text-sm center">M</div></li>
-                    </ul>
-                </nav>
-            </div> */}
+          
             <div className=" flex flex-col tablet:flex-row justify-around items-center  text-white py-[4%]  ">
 
                 <div className="w-[320px] md:w-[750px]  ">
@@ -203,13 +73,15 @@ const GoLive = () => {
                             {rowData?.name}
                         </h1>
                         <div data-vjs-player className='w-full h-full ![&>video]:h-[580px] ![&>:not(video)]:hidden'>
-                            <video
-                                id="video"
-                                ref={videoEl}
-                                className=" !w-full object-cover video-js vjs-theme-city !h-[580px]"
-                                controls
-                            // playsInline
-
+                        <Player
+                                title={rowData.name}
+                                playbackId= {rowData.playback_id}
+                                showPipButton
+                                loop
+                                autoPlay
+                                showTitle={false}
+                                muted
+                                jwt={rowData.token}
                             />
                         </div>
                         <div className="bg-white font-semibold text-black rounded-xl flex items-center justify-center absolute right-2 top-2 p-1 pr-2 text-xs">

@@ -1,7 +1,20 @@
 import EventCard from '@components/eventcard/EventCard'
-import React from 'react'
-import ENV from '../../utils/env'
-const CreateEvent2 = ({ form, handleChange, handleImageUpload, handleBannerUpload }) => {
+import React, { useEffect } from 'react'
+import { getApiReq } from '../../utils/ApiHandler';
+
+const CreateEvent2 = ({ form, handleFileUpload,setAssetUploadUrl, handleImageUpload, handleBannerUpload }) => {
+    useEffect(()=>{
+        getApiReq(`/user/get-storage-details`)
+        .then(async (storageDetails) => {
+            console.log(storageDetails);
+            if(storageDetails.status){
+                setAssetUploadUrl(storageDetails?.data?.data)
+            }
+        })
+        .catch((e) => {
+            console.log('Error',e);
+        });
+    },[])
     return (
         <>
             <div>
@@ -55,8 +68,8 @@ const CreateEvent2 = ({ form, handleChange, handleImageUpload, handleBannerUploa
                                         </div>
                                     </div>
                                     <div className="mt-5">
-                                        <label for="">YouTube Video (Optional)</label>
-                                        <input type="text" name='youtube' value={form.youtube} onChange={handleChange} placeholder="Link to video" className="w-full bg-slate-700 border-b border-solid border" />
+                                        <label for="">Teaser Video</label>
+                                        <input type="file" name='teaser' required value={form.youtube} onChange={(e)=>handleFileUpload(e)} placeholder="Link to video" className="w-full bg-slate-700 border-b border-solid border" />
                                     </div>
                                 </form>
                                 <div className="md:ml-[6%] lg:ml-[18%]  mt-7 ">
