@@ -32,35 +32,35 @@ export const navlinks = [
 ];
 export const singerImage = [
   {
-    id: 90,
+    id: 98,
     imgpath: "/images/login/Kendrick.png",
     name: "Kendrick Lamar",
     paragraph: "Kendrick Lamar Duckworth is an American rapper and songwriter. Known for his progressive musical styles and socially conscious songwriting",
     data: "Jan 18 2022"
   },
   {
-    id: 91,
+    id: 99,
     imgpath: "/images/login/Lil-Nas-x.png",
     name: "Lil Nas x",
     paragraph: "Montero Lamar Hill, known by his stage name Lil Nas X, is an American rapper, singer, and songwriter.",
     data: "Jan 18 2022"
   },
   {
-    id: 92,
+    id: 100,
     imgpath: "/images/login/DRAKE.png",
     name: "DRAKE",
     paragraph: "Canadian rapper, singer, and actor. An influential figure in contemporary popular music, he has been credited for popularizing singing and R&B sensibilities in hip hop.",
     data: "Jan 18 2022"
   },
   {
-    id: 93,
+    id: 101,
     imgpath: "/images/login/DOJA-CAT.png",
     name: "DOJA CAT",
     paragraph: "American rapper and singer. Born and raised in Los Angeles, Her song 'so High' caught the attention of RCA Records, with which she signed a joint record deal at the age of 17",
     data: "Jan 18 2022"
   },
   {
-    id: 94,
+    id: 102,
     imgpath: "/images/login/Emiway-Bantai.png",
     name: "Emiway Bantai",
     paragraph: "Emiway Bantai is a very popular Indian rapper,singer, lyricist. He creates hip-hop rap songs.",

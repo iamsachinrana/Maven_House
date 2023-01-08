@@ -84,27 +84,27 @@ const ArtistDetail = () => {
     })
   }
   const setBg = () => {
-    if (Number(id) === 90) {
+    if (Number(id) === 98) {
       profile = "/images/login/Kendrick.png";
       bg = '/images/creaters-name/kendrick.png';
       title = 'KENDRICK LAMAR KENDRICK LAMAR KENDRICK LAMAR';
     }
-    if (Number(id) === 91) {
+    if (Number(id) === 99) {
       profile = "/images/login/Lil-Nas-x.png";
       bg = '/images/creaters-name/lil.png';
       title = 'LIL NAS X LIL NAS X LIL NAS X';
     }
-    if (Number(id) === 92) {
+    if (Number(id) === 100) {
       profile = "/images/login/DRAKE.png";
       bg = '/images/creaters-name/drake.png';
       title = 'DRAKE DRAKE DRAKE DRAKE DRAKE';
     }
-    if (Number(id) === 93) {
+    if (Number(id) === 101) {
       profile = "/images/login/DOJA-CAT.png";
       bg = '/images/creaters-name/doja.png';
       title = 'DOJA CAT DOJA CAT DOJA CAT DOJA CAT';
     }
-    if (Number(id) === 94) {
+    if (Number(id) === 102) {
       profile = "/images/login/Emiway-Bantai.png";
       bg = '/images/creaters-name/emiway.png';
       title = 'EMIWAY EMIWAY EMIWAY EMIWAY EMIWAY';
