@@ -137,7 +137,7 @@ const Navbar = () => {
                             </li>
                             : <li>
                                 {/* <button onClick={login} className="px-1 tablet:px-3 py-1  rounded-3xl border hover:bg-transparent border-gray-600 bg-[#707070]" >Log In / Sign In</button> */}
-                                <button className="px-1 tablet:px-3 py-1  rounded-3xl border hover:bg-transparent border-gray-600 bg-[#707070]"
+                                <button className="px-1 tablet:px-5 py-1  rounded-3xl border hover:bg-transparent border-gray-600 bg-[#333333]"
                                     onClick={() => dispatch(openWalletModal())}
                                 >Log In / Sign In</button>
                             </li>

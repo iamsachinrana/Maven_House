@@ -41,6 +41,9 @@ const CreateEvent = () => {
     const changeSteps = () => {
         setStep(step + 1);
     }
+    const backSteps = () => {
+        setStep(step>1&&step - 1);
+    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -59,6 +62,7 @@ const CreateEvent = () => {
     }
 
     const handleImageUpload = async (e) => {
+        e.preventDefault();
         if (e.target.files && e.target.files.length > 0) {
             const { name, files } = e.target;
             const file = files[0];
@@ -81,6 +85,7 @@ const CreateEvent = () => {
     };
 
     const handleFileUpload = async (e)=>{
+        e.preventDefault();
         const file = e.target.files[0];
         try {
             const data = new FormData();
@@ -181,26 +186,15 @@ const CreateEvent = () => {
                     <div className="create-post text-white flex justify-center items-center mt-5 ">
                         <div className="buttons items-center flex tablet:gap-6 gap-2 relative">
                             <div
-                                className="absolute bg-gradient-to-r from-slate-300  to-[#181a20] w-[97%] flex justify-center items-center ml-2 h-[4px] -z-10">
+                                className="absolute bg-white/90 w-[97%] flex justify-center items-center ml-2 h-[2px] -z-10">
                             </div>
 
 
                             {['About', 'Description', 'Images', 'Location', 'Review'].map((item, index) => (
                                 <button type="submit "
-                                    className={`bg-[#444444] my-btn  flex items-center justify-center ${step === index + 1 ? 'border border-solid w-32' : ''}  py-2 px-4 rounded-full`}>{index + 1}. {step === index + 1 ? item : ''}</button>
+                                    className={`bg-[#444444] my-btn  flex items-center whitespace-nowrap justify-center ${step === index + 1 ? 'border border-solid w-32 text-white font-semibold' : ''}  py-2 px-4 rounded-full`}>{index + 1}. {step === index + 1 ? item : ''}</button>
                             ))}
-                            {/* <button type="submit"
-                                className={`bg-[#444444] tablet:p-[20px] p-[5px] text-gray-400  text-sm tablet:text-md 
-                                rounded-[50%] flex items-center justify-center h-[30px] tablet:h-[40px] ${step > 1 ? 'border border-solid' : ''}`}>2. Description</button>
-                            <button type="submit"
-                                className={`bg-[#444444] tablet:p-[20px] p-[5px] text-gray-400  text-sm tablet:text-md rounded-[50%] flex items-center justify-center h-[30px] tablet:h-[40px] ${step > 2 ? 'border border-solid' : ''}`}>3. Images</button>
-                            <button type="submit"
-                                className={`bg-[#444444] tablet:p-[20px] p-[5px] text-gray-400  text-sm tablet:text-md rounded-[50%] flex items-center justify-center h-[30px] tablet:h-[40px] ${step > 3 ? 'border border-solid' : ''}`}>4. Location</button>
-                            <button type="submit"
-                                className="bg-[#444444] tablet:p-[20px] p-[5px] text-gray-400   text-sm tablet:text-mdrounded-[50%] flex items-center justify-center h-[30px] tablet:h-[40px]">5. Review</button>
-                            <div
-                                className="absolute bg-gradient-to-r from-slate-300  to-[#181a20] w-[97%] flex justify-center items-center ml-2 h-[4px] -z-10">
-                            </div> */}
+                            
                         </div>
                     </div>
                     <div>
@@ -220,6 +214,8 @@ const CreateEvent = () => {
                                             handleChange={handleChange} />}
                     </div>
                     <div className=" flex justify-center py-4 text-white gap-5 ">
+                    {step > 1 && <button type="submit" className="bg-[#444444] py-1 px-4 font-semibold rounded-[30px] flex items-center justify-center" onClick={backSteps}><div className="mr-2"><i className="fa fa-chevron-left" aria-hidden="true"></i></div> Back </button> 
+                            }
                         {step < 5 ? <button type="submit" className="bg-[#444444] py-1 px-4 font-semibold rounded-[30px] flex items-center justify-center" onClick={changeSteps}>Next Step <div className="ml-2"><i className="fa fa-chevron-right" aria-hidden="true"></i></div></button> :
                             <button type="submit" onClick={handleSubmit}
                                 className="bg-[#444444] py-1 px-4  rounded-[30px] flex items-center justify-center">Publish Event <div

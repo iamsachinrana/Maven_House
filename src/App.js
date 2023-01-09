@@ -112,7 +112,7 @@ const Routes = ({ }) => {
           <Route path={'/doja-cat'} exact component={Doja_Cat} />
           <Route path={'/emiway'} exact component={Emiway} />
           <Route path={'/about'} export component={About} />
-          <Route path={'/creator'} export component={Creator} />
+          <Route path={'/creator'} export component={GoLive} />
           <Route path={"/dashboard"} render={(props) => <DashboardRoutes {...props} />} />
 
         </Switch>

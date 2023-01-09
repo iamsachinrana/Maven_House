@@ -61,9 +61,8 @@ const GoLive = () => {
 
 
     return (
-        <div className='h-sc' >
-          
-            <div className=" flex flex-col tablet:flex-row justify-around items-center  text-white py-[4%]  ">
+        <div className='go-live' >
+            <div className="go-live-content flex flex-col gap-10 tablet:gap-20 tablet:flex-row justify-center items-center  text-white py-[4%]  ">
 
                 <div className="w-[320px] md:w-[750px]  ">
                     {rowData?.id ?
@@ -144,7 +143,8 @@ const GoLive = () => {
                             )} */}
                         </>
 
-                        : <form action="">
+                        : <form action=""   
+autoComplete='off'>
                             <h3 className='tablet:text-5xl text-2xl font-semibold'>Enter API Key</h3>
                             <div className="input-box my-4">
                                 <input placeholder='Paste API Key here' type="text" name="apiKey" value={form.apiKey} onChange={(e) => setApiKey(e.target.value)} className='blur-bg w-full  border-b-2 border-0 text-white' />
@@ -152,7 +152,7 @@ const GoLive = () => {
                             <div className="flex relative col-span-2 tablet:col-span-1 mb-5  flex-col">
                 <label className="text-sm tablet:text-md" for="eventcategory">User</label>
 
-                <select name="user_id" value={form.user_id} onChange={handleChange} id="cars" className="text-xs bg-gray-700 focus:border-none border-0" >
+                <select name="user_id" value={form.user_id} onChange={handleChange} id="cars" className="text-xs bg-gray-700 " >
                   <option value="">Select User</option>
                   <option value="98">KENDRICK LAMAR</option>
                   <option value="99">LIL NAS X</option>
@@ -169,7 +169,8 @@ const GoLive = () => {
                 </div>
 
                 <div className="w-[320px] tablet:w-[340px] md:w-[450px] max-w-[650px] blur-bg mt-10 tablet:mt-0 rounded-2xl tablet:p-10 p-5">
-                    <form action="">
+                    <form action=""   
+autoComplete='off'>
                         {/* {console.log(rowData)} */}
                         <div className="grid grid-cols-2 ">
                             <div className="">

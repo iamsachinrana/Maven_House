@@ -7,7 +7,8 @@ const Profile = () => {
       <div className="border-b tablet:pb-3 pb-1">
         <h1 className='tablet:text-4xl text-left'>Profile</h1>
       </div>
-      <form action="">
+      <form action=""   
+autoComplete='off'>
       <div className=" border border-dashed tablet:p-5 p-2 rounded-md cursor-pointer mt-5">
         <label htmlFor='file-input' className="   ">
           <p className='tablet:text-body text-xs'>Drag 'n' drop an image here, or click to select an image. Images must be under 2mb.</p>

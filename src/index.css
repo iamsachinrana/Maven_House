@@ -19,9 +19,6 @@ h2 {
     border: 2px solid gray;
     border-radius: 8px;
   }
-
-
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
@@ -44,7 +41,86 @@ h2 {
   src: url("../public/fonts/GLECB.TTF");
 }
 
-@layer base {}
+@layer base {
+  
+
+  [type="text"],
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple],
+  textarea,
+  select {
+    @apply transition duration-200  text-white  w-full border-b-[1.8px] border-t-0 border-x-0 border-b-transparent   placeholder-[#888];
+  }
+ 
+  input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: #888;
+}
+  [type="text"]:focus,
+  [type="email"]:focus,
+  [type="url"]:focus,
+  [type="password"]:focus,
+  [type="number"]:focus,
+  [type="date"]:focus,
+  [type="datetime-local"]:focus,
+  [type="month"]:focus,
+  [type="search"]:focus,
+  [type="tel"]:focus,
+  [type="time"]:focus,
+  [type="week"]:focus,
+  [multiple]:focus,
+  textarea:focus,
+  select:focus,
+  [type="text"]:focus-visible,
+  [type="email"]:focus-visible,
+  [type="url"]:focus-visible,
+  [type="password"]:focus-visible,
+  [type="number"]:focus-visible,
+  [type="date"]:focus-visible,
+  [type="datetime-local"]:focus-visible,
+  [type="month"]:focus-visible,
+  [type="search"]:focus-visible,
+  [type="tel"]:focus-visible,
+  [type="time"]:focus-visible,
+  [type="week"]:focus-visible,
+  [multiple]:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    @apply  shadow-none border-b-white  !important;
+    --tw-ring-color: #a19f9d !important;
+    --tw-ring-shadow: unset !important;
+    outline-offset: unset !important;
+    outline: 2px solid transparent !important;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    background: transparent !important;
+    transition: background 5000s ease-in;
+    color:white !important;
+  }
+
+
+
+}
 @layer components  {
   .custom-view-height{
     min-height: calc(100vh - 80px);
@@ -67,7 +143,7 @@ h2 {
     @apply rounded-xl hover:bg-slate-600  hover:cursor-pointer text-body2  items-center duration-300 py-1 flex gap-3  px-5  hover:text-[gray] 
   }
   .signoutbtn{
-    @apply hover:text-[gray] border text-xs border-solid hover:bg-slate-600 border-gray-500 tablet:px-3 px-1 py-1 hover:border-none rounded-md flex items-center gap-1
+    @apply  border text-xs hover:border-transparent border-solid hover:bg-[#ff4d4d] hover:text-white border-gray-500 tablet:px-3 px-1 py-1  rounded-md flex items-center gap-1
   }
   .iconrotate{
     @apply hover:scale-110 hover:rotate-[359deg] duration-700
@@ -86,7 +162,7 @@ h2 {
     @apply py-0 bg-transparent w-full border-b-2 border-0 
   }
   .blur-bg{
-    @apply bg-[#80808022] 
+    @apply bg-[#80808022] ;
   }
   .dashboard{
     height: calc(100vh - 80px);
@@ -108,12 +184,23 @@ h2 {
     object-fit: cover;
 
   }
+  .type-switch:checked + label >span{
+    @apply left-[24px];
+
+  }
+  .go-live{
+    background: linear-gradient(to right , rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('../public/images/home/singers.png');
+    min-height: calc(100vh - 80px);
+    background-size: cover;
+    background-position: center;
+  }
+  .go-live-content{
+    @apply backdrop-blur-[5px];
+    min-height: calc(100vh - 80px);
+  }
 
 }
-@layer utilities  {
 
-
-}
 
 :root {
   --p-gray: rgb(198, 198, 198);
@@ -172,13 +259,9 @@ a:hover{
   background-blend-mode: overlay;
 }
 
-/* .login-header {
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, 18%);
-  left: 50%;
-} */
+.login-header {
+ height: calc(100vh - 80px);
+}
 
 /* acordina */
 
@@ -295,14 +378,14 @@ h1 {
   align-items: center;
   text-align: center;
   position: absolute;
-  bottom: -30px;
+  bottom: -50px;
   transition: .3s ease-in-out;
 
 }
 
 .item .slider-wrapper:hover .slider-wrapper-content {
   transition: .3s ease-in-out;
-  bottom: 10px;
+  bottom: 40px;
 }
 
 .item .slider-wrapper .slider-wrapper-content button {
@@ -321,7 +404,7 @@ h1 {
 }
 
 .item:hover {
-  box-shadow: 0px 0px 7px red;
+  box-shadow: 0px 0px 7px #0d0d0d;
   transition: .3s all;
 }
 
@@ -428,24 +511,7 @@ h1 {
   }
 }
 
-@media (min-width:992px) {
-  .live-preview::after {
-    position: absolute;
-    content: "";
-    width: 2px;
-    top: 47px;
-    height: 350px;
-    right: -39px;
-    /* overflow: visible; */
-    background-color: gray;
 
-  }
-
-}
-
-.live-preview {
-  position: relative;
-}
 
 select {
   padding: 11px 13px !important;
@@ -511,6 +577,14 @@ select {
   
 }
 
-/* .container {
-  @apply sm:max-w-full !important;
-} */
+.fa-arrow-left:before {
+  content: "\f053";
+}
+.fa-arrow-right:before{
+  content:"\f054"
+}
+.owl-carousel .owl-nav button.owl-prev,.owl-carousel .owl-nav button.owl-next{
+  width: 35px;
+  height: 35px;
+
+}

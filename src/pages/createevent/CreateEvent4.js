@@ -5,11 +5,11 @@ const CreateEvent4 = ({ form }) => {
     return (
         <div>
             <header className=" px-4">
-                <div className="create-post-wrapper text-white mt-6 px-0 sm:px-4">
-                    <h2 className="md:text-2xl text-xl font-semibold">Review the details</h2>
-                    <div className=" mt-6">
-                        <div className="grid gap-8 md:grid-cols-2">
-                            <div className="grid grid-cols-1 gap-3 bg-[#212329] md:p-4 p-1 py-4 rounded-3xl live-preview">
+                <div className="create-post-wrapper max-w-[1440px] mx-auto text-white mt-6 px-0">
+                    <h2 className="lg:text-[32px] text-xl font-semibold">Review the details</h2>
+                    <div className=" mt-6 mb-6">
+                        <div className="grid lg:gap-24 tablet:gap-10 md:grid-cols-2">
+                            <div className="grid grid-cols-1 gap-3 bg-[#212329] md:p-4 p-1 py-4 rounded-3xl">
                                 <div className="">
                                     <div className="pl-2">
                                         <h3 className="md:text-2xl text-xl  font-semibold">{form?.eventName}</h3>
@@ -42,8 +42,8 @@ const CreateEvent4 = ({ form }) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="lg:ml-[18%] md:ml-[6%] mt-7 md:mt-0">
-                                <h3>Event Card</h3>
+                            <div className="mt-7 md:mt-0">
+                                <h3 className='font-bold'>Event Card</h3>
                                 <EventCard form={form}/>
                             </div>
                         </div>
