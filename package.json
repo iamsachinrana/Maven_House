@@ -19,7 +19,6 @@
     "@web3-react/injected-connector": "^6.0.7",
     "@xmtp/xmtp-js": "^7.7.3",
     "axios": "^1.2.0",
-    "ethers": "^5.7.2",
     "fortmatic": "^2.2.1",
     "framer-motion": "^3.10.6",
     "js-cookie": "^3.0.1",
@@ -63,9 +62,11 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "chrome >= 67",
+      "edge >= 79",
+      "firefox >= 68",
+      "opera >= 54",
+      "safari >= 14"
     ],
     "development": [
       "last 1 chrome version",

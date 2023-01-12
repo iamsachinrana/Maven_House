@@ -5,20 +5,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import queryString from "query-string";
 import { useHistory } from "react-router-dom";
-import { Magic } from "magic-sdk";
+import { magic } from "@utils/constants";
 import { ConnectExtension } from "@magic-ext/connect";
 import ENV from "@utils/env";
 import Web3 from "web3";
 
-const maticNodeOption = {
-  rpcUrl: ENV.MAGIC_URL_CUSTOM, // Polygon RPC URL
-  chainId: ENV.MAGIC_CHAIN_ID, // Polygon chain id
-}
-const magic = new Magic(ENV.MAGIC_KEY, {
-  network: maticNodeOption,
-  locale: "en_US",
-  extensions: [new ConnectExtension()]
-});
 const web3 = new Web3(magic.rpcProvider);
 
 const ConnectWalletPopup = ({ isOpen, onClose }) => {
@@ -30,6 +21,10 @@ const ConnectWalletPopup = ({ isOpen, onClose }) => {
   const [account, setAccount] = useState(null);
 
   const connectMetaMaskWallet = async () => {
+    const accounts = await ethereum.request({
+      method: 'eth_requestAccounts',
+    });
+    console.log(accounts);
     web3.eth
       .getAccounts()
       .then((accounts) => {

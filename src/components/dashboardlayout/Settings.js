@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import DashboardNavbar from './DashboardNavbar';
+import { magic } from "@utils/constants";
 import * as PushAPI from '@pushprotocol/restapi';
 import Cookies from 'js-cookie';
 import { useSelector } from 'react-redux';
@@ -11,25 +12,30 @@ const Settings = () => {
   const handleChange = async (e) => {
     const checked = e.target.checked;
 
-    const _provider = new window.ethers.providers.Web3Provider(window.ethereum);
-    const _signer = _provider.getSigner(walletId);
+    const _provider = new window.ethers.providers.Web3Provider(magic.rpcProvider);
+    const _signer = _provider.getSigner();
+    const _address = await _signer.getAddress();
 
+
+    const ___provider = new window.ethers.providers.Web3Provider(window.ethereum);
+    const __signer = ___provider.getSigner(_address);
     if (checked) {
       //fetch the subscription status
       const subscriptions = await PushAPI.user.getSubscriptions({
-        user: `eip155:80001:${walletId}`, // user address in CAIP
+        user: `eip155:80001:${_address}`, // user address in CAIP
         env: 'staging'
       });
-      console.log(subscriptions)
       if (!subscriptions || subscriptions.length === 0) {
         await PushAPI.channels.subscribe({
-          signer: _signer,
+          signer: __signer,
           channelAddress: `eip155:80001:0x163BBe9C2d230c99B06fB0F15eF4B4931a5e3734`, // channel address in CAIP
-          userAddress: `eip155:80001:${walletId}`, // user address in CAIP
+          userAddress: `eip155:80001:${_address}`, // user address in CAIP
           onSuccess: () => {
             console.log('opt in success');
           },
           onError: (e) => {
+            console.log(__signer);
+            console.log(_address);
             console.error('opt in error', e);
           },
           env: 'staging'

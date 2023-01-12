@@ -5,20 +5,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import queryString from "query-string";
 import { useHistory } from "react-router-dom";
-import { Magic } from "magic-sdk";
-import { ConnectExtension } from "@magic-ext/connect";
+import { magic } from "@utils/constants";
 import ENV from "@utils/env";
 import Web3 from "web3";
 
-const maticNodeOption = {
-    rpcUrl: ENV.MAGIC_URL_CUSTOM, // Polygon RPC URL
-    chainId: ENV.MAGIC_CHAIN_ID, // Polygon chain id
-}
-const magic = new Magic(ENV.MAGIC_KEY, {
-    network: maticNodeOption,
-    locale: "en_US",
-    extensions: [new ConnectExtension()]
-});
+
 const web3 = new Web3(magic.rpcProvider);
 
 const AuthenticatePopup = ({ isOpen, onClose, eventId, setTokenEvent }) => {
