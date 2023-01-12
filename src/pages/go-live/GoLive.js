@@ -221,7 +221,7 @@ const GoLive = () => {
                 </div>
 
                 <div className="w-[320px] tablet:w-[340px] md:w-[450px] max-w-[650px] blur-bg mt-10 tablet:mt-0 rounded-2xl tablet:p-10 p-5">
-
+                    <h3>Notify Viewers</h3>
                     <div className="">
                         <label htmlFor="currently">Message
                             <input value={notify.message} onChange={(e) => setNotify({ ...notify, message: e.target.value })} required id='currently' type="text" className='input-b ' />
