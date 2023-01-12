@@ -40,6 +40,10 @@ h2 {
   font-family: "Gloucester";
   src: url("../public/fonts/GLECB.TTF");
 }
+@font-face {
+  font-family: "modern20";
+  src: url("../public/fonts/Modern\ No.\ 20.ttf");
+}
 
 @layer base {
   
@@ -59,7 +63,7 @@ h2 {
   [multiple],
   textarea,
   select {
-    @apply transition duration-200  !text-white  w-full border-b-[1.8px] border-t-0 border-x-0 border-b-transparent   !placeholder-[#888];
+    @apply transition duration-200  !text-white rounded-md  w-full border-b-[1.8px] border-t-0 border-x-0 border-b-transparent   !placeholder-[#888];
   }
  
   input[type="date"]::-webkit-datetime-edit-text,
@@ -195,10 +199,8 @@ input[type="date"]:focus::-webkit-datetime-edit-year-field {
 
   }
   .go-live{
-    background: linear-gradient(to right , rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('../public/images/home/singers.png');
     min-height: calc(100vh - 80px);
-    background-size: cover;
-    background-position: center;
+   
   }
   .go-live-content{
     @apply backdrop-blur-[5px];

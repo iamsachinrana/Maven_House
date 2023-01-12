@@ -6,7 +6,7 @@ const EventCard = ({form}) => {
     const month = ["Jan","Feb","Mar","Apr","May","Jun","July","Aug","Sept","Oct","Nov","Dec"];
     return (
         <div className='relative'>
-            <div className='absolute left-[-48px] h-[340px] w-[2px] bg-gray-600 lg:block hidden'></div>
+            <div className='absolute left-[-48px] h-[340px] w-[2px] bg-gray-600 lg:block hidden top-[35px]'></div>
             <div className="lg:w-[450px]  lg:mx-0 md:mt-6 mt-3 rounded-3xl overflow-hidden  ">
                 <div className="relative h-[250px] tablet:h-[350px] lg:h-[250px] ">
                     <img src={form?.ticketImage ? form?.ticketImage:"/images/createevent/bhubhan-bam-wallpapaer.png"} className="object-cover h-[250px] tablet:h-[350px] lg:h-[250px] w-full" alt="" />

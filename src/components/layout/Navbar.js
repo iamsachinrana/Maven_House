@@ -103,7 +103,7 @@ const Navbar = () => {
         <>
             <div>
                 <nav className=" py-2  h-20 mx-auto flex 
-            justify-between text-white  items-center px-4">
+            justify-between text-white  items-center px-[21px]">
                     <div className="">
                         <NavLink to="/">
                             <img src="/images/navbar/maven.png" alt="" /></NavLink>

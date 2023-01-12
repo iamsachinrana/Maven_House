@@ -61,12 +61,12 @@ const GoLive = () => {
 
 
     return (
-        <div className='go-live' >
+        <div className='bg-black go-live' >
             <div className="go-live-content flex flex-col gap-10 tablet:gap-20 tablet:flex-row justify-center items-center  text-white py-[4%]  ">
 
-                <div className="w-[320px] md:w-[750px]  ">
+                <div className="max-w-[320px] w-full md:min-w-[700px] min-w-[300px] md:max-w-[750px] min-h-[557px] blur-bg  p-4 rounded-md flex justify-center items-center">
                     {rowData?.id ?
-                        <>
+                        <div className='w-full md:min-w-[700px] min-w-[300px]'>
                             < div className="relative go-live bg-black h-[580px] w-full mx-auto overflow-hidden rounded-xl ">
                         <h1 className='absolute top-0 min-w-[250px] left-0 py-2 font-bold text-xl z-[10000] px-2  text-white'>
                             {rowData?.name}
@@ -141,15 +141,15 @@ const GoLive = () => {
                                     </fieldset>
                                 </>
                             )} */}
-                        </>
+                        </div>
 
-                        : <form action=""   
-autoComplete='off'>
+                        : <form className='w-full md:min-w-[700px] min-w-[300px]' action=""   
+                           autoComplete='off'>
                             <h3 className='tablet:text-5xl text-2xl font-semibold'>Enter API Key</h3>
                             <div className="input-box my-4">
                                 <input placeholder='Paste API Key here' type="text" name="apiKey" value={form.apiKey} onChange={(e) => setApiKey(e.target.value)} className='blur-bg w-full  border-b-2 border-0 text-white' />
                             </div>
-                            <div className="flex relative col-span-2 tablet:col-span-1 mb-5  flex-col">
+                            <div className="flex w-full relative col-span-2 tablet:col-span-1 mb-5  flex-col">
                 <label className="text-sm tablet:text-md" for="eventcategory">User</label>
 
                 <select name="user_id" value={form.user_id} onChange={handleChange} id="cars" className="text-xs bg-gray-700 " >
@@ -161,16 +161,16 @@ autoComplete='off'>
                   <option value="102">EMIWAY</option>
                 </select>
 
-              </div>
+                           </div>
                             <div className="">
                                 <button type="submit" className='bg-white rounded-lg text-black py-2 font-semibold w-full' onClick={submitHandler}>Get Streaming Key</button>
                             </div>
-                        </form>}
+                          </form>}
                 </div>
 
-                <div className="w-[320px] tablet:w-[340px] md:w-[450px] max-w-[650px] blur-bg mt-10 tablet:mt-0 rounded-2xl tablet:p-10 p-5">
+                <div className="w-[320px] tablet:w-[340px] blur-bg md:w-[450px] max-w-[650px] mt-10 tablet:mt-0 rounded-2xl tablet:p-10 p-5">
                     <form action=""   
-autoComplete='off'>
+                         autoComplete='off'>
                         {/* {console.log(rowData)} */}
                         <div className="grid grid-cols-2 ">
                             <div className="">

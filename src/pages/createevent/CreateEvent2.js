@@ -34,7 +34,7 @@ const CreateEvent2 = ({ form, handleFileUpload, setAssetUploadUrl, handleImageUp
                                                 
                                                     <div className=' h-full w-full'>
                                                         <label htmlFor='ticket-image' className='flex flex-col items-center justify-center gap-1 h-full'>
-                                                        {form.ticketImage ? <img  className='h-full object-cover w-full' src={form?.ticketImage} alt='' /> :
+                                                        {form.ticketImage ? <img  className='h-full object-cover w-full cursor-pointer' src={form?.ticketImage} alt='' /> :
                                                             <div className='flex flex-col items-center justify-center gap-1'>
                                                                 <span className="flex bg-gray-500 p-1 text-xs">select image</span>
                                                             <p className="text-xs text-center">(Recommended Max size: 2MB)</p>
@@ -55,7 +55,7 @@ const CreateEvent2 = ({ form, handleFileUpload, setAssetUploadUrl, handleImageUp
                                                         <div className='h-full w-full'>
                                                             <label htmlFor='gallary-image'   className='flex flex-col items-center justify-center gap-1 h-full'>
 
-                                                            {form.gallaryImage ? <img className='h-full object-cover w-full' src={form?.gallaryImage[0]} alt='' /> :
+                                                            {form.gallaryImage ? <img className='h-full object-cover w-full cursor-pointer' src={form?.gallaryImage[0]} alt='' /> :
                                                             <div className='flex flex-col items-center justify-center gap-1'>
                                                                 <span className="flex bg-gray-500 p-1 text-xs">select image</span>
                                                             <p className="text-xs text-center">(Recommended Max size: 2MB)</p>

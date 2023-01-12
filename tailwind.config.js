@@ -29,6 +29,7 @@ module.exports = {
         think: ["Think", "sans-serif"],
         hey: ["Hey-November", "sans-serif"],
         viner: ["Viner", "sans-serif"],
+        modern: ["modern20", "sans-serif"],
         gloucester: ["Gloucester", "sans-serif"],
 
       },

@@ -85,29 +85,29 @@ const ArtistDetail = () => {
   }
   const setBg = () => {
     if (Number(id) === 98) {
-      profile = "/images/login/Kendrick.png";
+      profile = "/images/creators/kendrick.jpg";
       bg = '/images/creaters-name/kendrick.webp';
-      title = 'KENDRICK LAMAR KENDRICK LAMAR KENDRICK LAMAR';
+      title = <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-[400] text-center font-modern">KENDRICK&nbsp;LAMAR &nbsp;&nbsp; KENDRICK&nbsp;LAMAR &nbsp;&nbsp;KENDRICK&nbsp;LAMAR</h1>;
     }
     if (Number(id) === 99) {
-      profile = "/images/login/Lil-Nas-x.png";
+      profile = "/images/creators/lilxnas.jpg";
       bg = '/images/creaters-name/lil.webp';
-      title = 'LIL NAS X LIL NAS X LIL NAS X';
+      title = <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-[400] text-center font-modern">D'LIL NAS X&nbsp;&nbsp; LIL NAS X &nbsp;&nbsp;LIL NAS X</h1>;
     }
     if (Number(id) === 100) {
-      profile = "/images/login/DRAKE.png";
+      profile = "/images/creators/drake.jpg";
       bg = '/images/creaters-name/drake.webp';
-      title = 'DRAKE DRAKE DRAKE DRAKE DRAKE';
+      title = <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-[400] text-center font-modern">DRAKE &nbsp;&nbsp; DRAKE&nbsp;&nbsp;  DRAKE &nbsp;&nbsp; DRAKE &nbsp;&nbsp; DRAKE</h1>;
     }
     if (Number(id) === 101) {
-      profile = "/images/login/DOJA-CAT.png";
+      profile = "/images/creators/doja.jpg";
       bg = '/images/creaters-name/doja.webp';
-      title = 'DOJA CAT DOJA CAT DOJA CAT DOJA CAT';
+      title =  <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-[400] text-center font-modern">DOJA CAT&nbsp;&nbsp; DOJA CAT&nbsp;&nbsp; DOJA CAT&nbsp;&nbsp; DOJA CAT</h1>;
     }
     if (Number(id) === 102) {
-      profile = "/images/login/Emiway-Bantai.png";
+      profile = "/images/creators/emiway.jpg";
       bg = '/images/creaters-name/emiway.webp';
-      title = 'EMIWAY EMIWAY EMIWAY EMIWAY EMIWAY';
+      title =  <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-[400] text-center font-modern">EMIWAY&nbsp;&nbsp; EMIWAY&nbsp;&nbsp; EMIWAY&nbsp;&nbsp; EMIWAY &nbsp;&nbsp;EMIWAY</h1>;
     }
   }
 
@@ -122,14 +122,14 @@ const ArtistDetail = () => {
       <div>
         <header className={
           ` px-4  h_creater flex bg-cover bg-[75%_17%] bg-no-repeat flex-col place-content-around text-white`}
-          style={{ backgroundImage: `url(${bg})` }}>
+          style={{ backgroundImage:`${Number(id) === 101 ?`linear-gradient(to right,rgba(0,0,0.2),rgba(0,0,0,0.2)) ,`:''}url(${bg})` }}>
           <div className="header-wrapper">
             <marquee direction="left" scrollamount="12" loop="1">
-              <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-[400] text-center ">{title}</h1>
+              {title}
             </marquee>
           </div>
-          <div className="header-wrapper-2 relative md:flex md:justify-between">
-            <div className="left-side backdrop-blur-md bg-[#00000059] items-center  md:flex gap-4 w-[500px] md:w-[573px] rounded-2xl p-3">
+          <div className="header-wrapper-2 relative md:flex md:justify-between px-[5px]">
+            <div className="left-side backdrop-blur-md bg-[#95919159] items-center  md:flex gap-[21px] w-[500px] md:w-[573px] rounded-2xl p-3">
               <div className=" bhuvam-radius-image overflow-hidden border-4 border-[#707070]">
                 <img className="object-cover w-full h-full object-top rounded-full" src={profile} alt="" />
               </div>
@@ -139,10 +139,12 @@ const ArtistDetail = () => {
                 <p className="text-xs mt-1 lg:line-clamp-4 line-clamp-6">Join Dane Cook on October 5th for his latest stand-up comedy event ‘Above It All’ filmed from his
                   front porch overlooking Los Angeles. This all new comedy routine is his third w/ director
                   Mart...</p>
-                <button className="mt-3 mr-2 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={checkOut}>Buy Ticket Now</button>
-                <button className="mt-3 mr-2 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push(`/artist-detail/${id}/live`)}>Join The Event</button>
+               <div className='flex gap-2 items-center'>
+               <button className="mt-3  font-bold w-full text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={checkOut}>Buy Ticket Now</button>
+                <button className="mt-3 font-bold w-full text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push(`/artist-detail/${id}/live`)}>Join The Event</button>
+               </div>
                 {/* <button className="mt-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push(`/artist-detail/${id}/record`)}>Watch the Records</button> */}
-                <button className="mt-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="button" onClick={(e)=>openVideoPopup(id)}>Watch the teaser</button>
+                <button className="mt-3 w-full font-bold text-black py-1 px-3 rounded-md bg-white" type="button" onClick={(e)=>openVideoPopup(id)}>Watch the teaser</button>
 
               </div>
             </div>
