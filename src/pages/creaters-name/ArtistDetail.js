@@ -86,27 +86,27 @@ const ArtistDetail = () => {
   const setBg = () => {
     if (Number(id) === 98) {
       profile = "/images/login/Kendrick.png";
-      bg = '/images/creaters-name/kendrick.png';
+      bg = '/images/creaters-name/kendrick.webp';
       title = 'KENDRICK LAMAR KENDRICK LAMAR KENDRICK LAMAR';
     }
     if (Number(id) === 99) {
       profile = "/images/login/Lil-Nas-x.png";
-      bg = '/images/creaters-name/lil.png';
+      bg = '/images/creaters-name/lil.webp';
       title = 'LIL NAS X LIL NAS X LIL NAS X';
     }
     if (Number(id) === 100) {
       profile = "/images/login/DRAKE.png";
-      bg = '/images/creaters-name/drake.png';
+      bg = '/images/creaters-name/drake.webp';
       title = 'DRAKE DRAKE DRAKE DRAKE DRAKE';
     }
     if (Number(id) === 101) {
       profile = "/images/login/DOJA-CAT.png";
-      bg = '/images/creaters-name/doja.png';
+      bg = '/images/creaters-name/doja.webp';
       title = 'DOJA CAT DOJA CAT DOJA CAT DOJA CAT';
     }
     if (Number(id) === 102) {
       profile = "/images/login/Emiway-Bantai.png";
-      bg = '/images/creaters-name/emiway.png';
+      bg = '/images/creaters-name/emiway.webp';
       title = 'EMIWAY EMIWAY EMIWAY EMIWAY EMIWAY';
     }
   }
@@ -121,11 +121,11 @@ const ArtistDetail = () => {
     <div>
       <div>
         <header className={
-          ` px-4  h_creater flex object-cover bg-[75%_17%] bg-no-repeat flex-col place-content-around text-white`}
+          ` px-4  h_creater flex bg-cover bg-[75%_17%] bg-no-repeat flex-col place-content-around text-white`}
           style={{ backgroundImage: `url(${bg})` }}>
           <div className="header-wrapper">
             <marquee direction="left" scrollamount="12" loop="1">
-              <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-semibold text-center ">{title}</h1>
+              <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-[400] text-center ">{title}</h1>
             </marquee>
           </div>
           <div className="header-wrapper-2 relative md:flex md:justify-between">
@@ -136,11 +136,11 @@ const ArtistDetail = () => {
               <div className=" md:w-[24rem]">
                 <h6 className="text-xs">DIGITAL WORLDWIDE MOMENT - OCTOBER 6TH, 2022 6:30AM IST</h6>
                 <h5 className="font-semibold text-[#E8952F] text-xl mt-1">Above It All</h5>
-                <p className="text-xs mt-1">Join Dane Cook on October 5th for his latest stand-up comedy event ‘Above It All’ filmed from his
+                <p className="text-xs mt-1 lg:line-clamp-4 line-clamp-6">Join Dane Cook on October 5th for his latest stand-up comedy event ‘Above It All’ filmed from his
                   front porch overlooking Los Angeles. This all new comedy routine is his third w/ director
                   Mart...</p>
-                <button className="mt-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={checkOut}>Buy Ticket Now</button>
-                <button className="mt-3 ml-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push(`/artist-detail/${id}/live`)}>Join The Event</button>
+                <button className="mt-3 mr-2 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={checkOut}>Buy Ticket Now</button>
+                <button className="mt-3 mr-2 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push(`/artist-detail/${id}/live`)}>Join The Event</button>
                 {/* <button className="mt-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push(`/artist-detail/${id}/record`)}>Watch the Records</button> */}
                 <button className="mt-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="button" onClick={(e)=>openVideoPopup(id)}>Watch the teaser</button>
 

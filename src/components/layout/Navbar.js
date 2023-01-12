@@ -111,6 +111,30 @@ const Navbar = () => {
                     <ul className="center gap-8">
                         <li> <NavLink to="/about" className="" >About</NavLink></li>
                         <li><NavLink to="/faq" className="" >FAQ</NavLink></li>
+                        <li>
+                        <div class="dropdown relative">
+      <button
+      className='relative'
+        id="dropdownMenuButton1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="fas fa-bell text-[18px]"></i>
+        <span className='absolute top-[-12px] right-[-8px] w-6 h-6 bg-gray-800 center text-white rounded-full text-[12px]'>2</span>
+        
+      </button>
+      <ul
+        class="dropdown-menu   absolute  hidden  bg-gray-800  text-base  z-50  float-left  py-2  list-none  text-left  rounded-lg  shadow-lg  mt-1  m-0  bg-clip-padding  border-none  min-w-[200px]"
+        aria-labelledby="dropdownMenuButton1">
+            <li className='text-white px-4 py-1'>Check here</li>
+            <li className='text-white px-4 py-1'>Check here</li>
+            <li className='text-white px-4 py-1'>Check here</li>
+            <li className='text-white px-4 py-1'>Check here</li>
+          
+        
+      </ul>
+    </div>   
+                        </li>
                         {user ?
                             <li className='cursor-pointer login-navbar'>
                                 <div className="w-8 cursor-pointer outline-4  outline-[#3E4046] border border-white h-8 bg-[#9B9B9B] rounded-full  text-sm center">M</div>

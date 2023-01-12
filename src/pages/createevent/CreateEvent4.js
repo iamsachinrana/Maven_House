@@ -14,10 +14,10 @@ const CreateEvent4 = ({ form }) => {
                                     <div className="pl-2">
                                         <h3 className="md:text-2xl text-xl  font-semibold">{form?.eventName}</h3>
                                         <div className=" mt-4 flex gap-2">
-                                            <button type="submit"
-                                                className="bg-[#444444]  rounded-3xl text-[10px] px-2 text-white">{form?.eventType}</button>
-                                            <button type="submit"
-                                                className="bg-[#444444]  rounded-3xl text-[10px] px-2 text-white">{form?.eventCategory}</button>
+                                            <button 
+                                                className="bg-[#444444]  rounded-3xl text-[10px] px-2 text-white">{form?.eventType?form?.eventType:'type'}</button>
+                                            <button 
+                                                className="bg-[#444444]  rounded-3xl text-[10px] px-2 text-white">{form?.eventCategory?form?.eventCategory:'category'}</button>
                                         </div>
                                     </div>
                                     <div className="mt-4 flex justify-between md:flex-row flex-col gap-3 px-2">

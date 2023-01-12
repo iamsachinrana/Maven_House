@@ -41,7 +41,7 @@ export default function CreateEvent0({ form, handleChange }) {
               <div className="flex relative col-span-2 tablet:col-span-1 flex-col">
                 <label className="text-sm tablet:text-md" for="eventtype">Event Type</label>
 
-                <select name="eventType" id="cars" value={form.eventType} onChange={handleChange} className="text-xs bg-gray-700 " >
+                <select name="eventType" id="cars" value={form.eventType} onChange={handleChange} className="text-xs bg-gray-700 placeholder:text-gray-600" >
                   <option value="">Select Event Type</option>
                   <option value="volvo">Volvo</option>
                   <option value="saab">Saab</option>
@@ -53,7 +53,7 @@ export default function CreateEvent0({ form, handleChange }) {
               <div className="flex relative col-span-2 tablet:col-span-1  flex-col">
                 <label className="text-sm tablet:text-md" for="eventcategory">Event Category</label>
 
-                <select name="eventCategory" value={form.eventCategory} onChange={handleChange} id="cars" className="text-xs bg-gray-700 " >
+                <select name="eventCategory" value={form.eventCategory} onChange={handleChange} id="cars" className="text-xs bg-gray-700 placeholder:text-gray-600 " >
                   <option value="">Select Category</option>
                   <option value="volvo">Volvo</option>
                   <option value="saab">Saab</option>
