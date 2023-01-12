@@ -1,31 +1,39 @@
 import React, { useEffect, useState } from 'react'
-import { BsPersonCircle } from 'react-icons/bs';
 import { NavLink, useHistory } from 'react-router-dom';
 import { magic } from "@utils/constants";
 import Cookies from 'js-cookie';
-import { useAriaHidden } from '@chakra-ui/react';
-import { openWalletModal, setWalletId, showToast } from '../../redux/action';
-import { useDispatch } from 'react-redux';
+import { openWalletModal, setWalletId } from '../../redux/action';
+import { useDispatch, useSelector } from 'react-redux';
 import Web3 from "web3";
+import * as PushAPI from '@pushprotocol/restapi';
 
 const web3 = new Web3(magic.rpcProvider);
 const Navbar = () => {
-    const [loginUser, setLoginUser] = useState(null);
+    const [notificationCount, setNotificationCount] = useState(0);
+    const [notifications, setNotifications] = useState([]);
     const history = useHistory();
     const dispatch = useDispatch();
-    // let user = Cookies.get('user-data');
+
     let user = Cookies.get('user-data');
     let userType = Cookies.get('user-type');
     userType = userType ? JSON.parse(userType) : userType;
-    const [account, setAccount] = useState('');
+
 
     useEffect(() => {
         (async () => {
+            let publicAddress = (await web3.eth.getAccounts())[0];
             if (user) {
-                let publicAddress = (await web3.eth.getAccounts())[0];
                 if (publicAddress) {
                     dispatch(setWalletId(publicAddress));
                 }
+
+                const notifications = await PushAPI.user.getFeeds({
+                    user: `eip155:80001:${publicAddress}`, // user address in CAIP
+                    env: 'staging'
+                });
+                console.log('notifications', notifications);
+                setNotifications(notifications);
+                setNotificationCount(notifications.length);
             }
         })()
     }, [])
@@ -52,20 +60,6 @@ const Navbar = () => {
             });
     };
 
-
-    const login = async () => {
-        web3.eth
-            .getAccounts()
-            .then((accounts) => {
-                console.log(accounts)
-                setAccount(accounts?.[0]);
-                Cookies.set('user', accounts[0]);
-                history.push('/')
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
 
     const signMessage = async () => {
         const publicAddress = (await web3.eth.getAccounts())[0];
@@ -111,33 +105,37 @@ const Navbar = () => {
                     <ul className="center gap-8">
                         <li> <NavLink to="/about" className="" >About</NavLink></li>
                         <li><NavLink to="/faq" className="" >FAQ</NavLink></li>
-                        <li>
-                        <div class="dropdown relative">
-      <button
-      className='relative'
-        id="dropdownMenuButton1"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        <i class="fas fa-bell text-[18px]"></i>
-        <span className='absolute top-[-12px] right-[-8px] w-6 h-6 bg-gray-800 center text-white rounded-full text-[12px]'>2</span>
-        
-      </button>
-      <ul
-        class="dropdown-menu   absolute  hidden  bg-gray-800  text-base  z-50  float-left  py-2  list-none  text-left  rounded-lg  shadow-lg  mt-1  m-0  bg-clip-padding  border-none  min-w-[300px]"
-        aria-labelledby="dropdownMenuButton1">
-           {Array(5).fill('2').map((item,index)=>(
-            <li> <NavLink to='/creator' className=' px-4 py-2 gap-2 flex items-center'> 
-            <img className='w-6 h-6 rounded-full object-cover' src="/images/ticket/bhuvam-r.png" alt="" /> 
-             <span className='text-white/80 hover:text-white'>you just booked a ticket</span></NavLink>
-             </li>
-           ))}
-        
-          
-        
-      </ul>
-    </div>   
-                        </li>
+                        {(notificationCount > 0) && <li>
+                            <div className="dropdown relative">
+                                <button
+                                    className='relative'
+                                    id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    <i className="fas fa-bell text-[18px]"></i>
+                                    {(notificationCount > 0) &&
+                                        <span className='absolute top-[-12px] right-[-8px] w-6 h-6 bg-gray-800 center text-white rounded-full text-[12px]'>{notificationCount}</span>}
+
+                                </button>
+                                <ul
+                                    className="dropdown-menu   absolute  hidden  bg-gray-800  text-base  z-50  float-left  py-2  list-none  text-left  rounded-lg  shadow-lg  mt-1  m-0  bg-clip-padding  border-none  min-w-[300px]"
+                                    aria-labelledby="dropdownMenuButton1">
+                                    {
+                                        notifications.length > 0 &&
+                                        notifications.map((Notification, index) => {
+                                            return <li key={index}> <NavLink to={Notification.cta} className=' px-4 py-2 gap-2 flex items-center'>
+                                                <img className='w-6 h-6 rounded-full object-cover' src={Notification.icon} alt={Notification.title} />
+                                                <span className='text-white/80 hover:text-white'>{Notification.message}</span></NavLink>
+                                            </li>
+                                        })
+                                    }
+
+
+
+                                </ul>
+                            </div>
+                        </li>}
                         {user ?
                             <li className='cursor-pointer login-navbar'>
                                 <div className="w-8 cursor-pointer outline-4  outline-[#3E4046] border border-white h-8 bg-[#9B9B9B] rounded-full  text-sm center">M</div>

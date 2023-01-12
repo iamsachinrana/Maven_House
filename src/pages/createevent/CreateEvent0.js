@@ -16,7 +16,7 @@ export default function CreateEvent0({ form, handleChange }) {
                   <input id='paid' type="checkbox" hidden className='peer type-switch' />
                   <label htmlFor='paid' className='relative cursor-pointer w-[40px] h-[16px] transition-all duration-200 peer-checked:bg-green-500  rounded-full bg-gray-800 inline-block'>
 
-                    <span class="flex h-[14px] w-[14px] rounded-full transition-[left] duration-200  bg-white absolute left-[2px] top-[50%] -translate-y-1/2"></span>
+                    <span className="flex h-[14px] w-[14px] rounded-full transition-[left] duration-200  bg-white absolute left-[2px] top-[50%] -translate-y-1/2"></span>
                   </label>
 
                 </div>
@@ -25,7 +25,7 @@ export default function CreateEvent0({ form, handleChange }) {
                   <input id='event' type="checkbox" hidden className='peer type-switch' />
                   <label htmlFor='event' className='relative cursor-pointer w-[40px] h-[16px] transition-all duration-200 peer-checked:bg-green-500   rounded-full bg-gray-800 inline-block'>
 
-                    <span class="flex h-[14px] w-[14px] rounded-full transition-[left] duration-200 peer-checked:left-[24px] bg-white absolute left-[2px] top-[50%] -translate-y-1/2"></span>
+                    <span className="flex h-[14px] w-[14px] rounded-full transition-[left] duration-200 peer-checked:left-[24px] bg-white absolute left-[2px] top-[50%] -translate-y-1/2"></span>
                   </label>
 
                 </div>

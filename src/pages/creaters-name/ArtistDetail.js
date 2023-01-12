@@ -1,4 +1,4 @@
-import React, { useState, useEffect , useMemo} from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { getApiReq } from '../../utils/ApiHandler';
 import { Player } from "@livepeer/react";
@@ -11,7 +11,7 @@ const ArtistDetail = () => {
   const { id } = useParams();
   const history = useHistory();
   const [image, setImage] = useState();
-  const [teaserPlaybackId,setTeaserPlaybackId] = useState('');
+  const [teaserPlaybackId, setTeaserPlaybackId] = useState('');
   const [showPopup, setShowPopup] = useState(false);
 
   const teaserPlaybackIdParsed = useMemo(() => parseCid(teaserPlaybackId) ?? parseArweaveTxId(teaserPlaybackId), [teaserPlaybackId]);
@@ -64,21 +64,21 @@ const ArtistDetail = () => {
     window.unlockProtocol && window.unlockProtocol.loadCheckoutModal();
   }
 
-  const openVideoPopup = (id)=>{
-    getApiReq(`/user/artist/${id}`).then(async(response)=>{
-      if(response.status){
-        let {data} = response?.data;
-        if(data.length>0){
+  const openVideoPopup = (id) => {
+    getApiReq(`/user/artist/${id}`).then(async (response) => {
+      if (response.status) {
+        let { data } = response?.data;
+        if (data.length > 0) {
           data = data[0];
           console.log(data);
           setShowPopup(true);
           if (data?.teaser_playback) {
-          setTeaserPlaybackId(`ipfs://${data?.teaser_playback}`);   
+            setTeaserPlaybackId(`ipfs://${data?.teaser_playback}`);
           }
 
         }
       }
-      else{
+      else {
         console.log(response?.data?.error);
       }
     })
@@ -102,12 +102,12 @@ const ArtistDetail = () => {
     if (Number(id) === 101) {
       profile = "/images/creators/doja.jpg";
       bg = '/images/creaters-name/doja.webp';
-      title =  <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-[400] text-center font-modern">DOJA CAT&nbsp;&nbsp; DOJA CAT&nbsp;&nbsp; DOJA CAT&nbsp;&nbsp; DOJA CAT</h1>;
+      title = <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-[400] text-center font-modern">DOJA CAT&nbsp;&nbsp; DOJA CAT&nbsp;&nbsp; DOJA CAT&nbsp;&nbsp; DOJA CAT</h1>;
     }
     if (Number(id) === 102) {
       profile = "/images/creators/emiway.jpg";
       bg = '/images/creaters-name/emiway.webp';
-      title =  <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-[400] text-center font-modern">EMIWAY&nbsp;&nbsp; EMIWAY&nbsp;&nbsp; EMIWAY&nbsp;&nbsp; EMIWAY &nbsp;&nbsp;EMIWAY</h1>;
+      title = <h1 className="text-4xl tablet:text-[90px] md:text-[100px] font-[400] text-center font-modern">EMIWAY&nbsp;&nbsp; EMIWAY&nbsp;&nbsp; EMIWAY&nbsp;&nbsp; EMIWAY &nbsp;&nbsp;EMIWAY</h1>;
     }
   }
 
@@ -122,7 +122,7 @@ const ArtistDetail = () => {
       <div>
         <header className={
           ` px-4  h_creater flex bg-cover bg-[75%_17%] bg-no-repeat flex-col place-content-around text-white`}
-          style={{ backgroundImage:`${Number(id) === 101 ?`linear-gradient(to right,rgba(0,0,0.2),rgba(0,0,0,0.2)) ,`:''}url(${bg})` }}>
+          style={{ backgroundImage: `${Number(id) === 101 ? `linear-gradient(to right,rgba(0,0,0.2),rgba(0,0,0,0.2)) ,` : ''}url(${bg})` }}>
           <div className="header-wrapper">
             <marquee direction="left" scrollamount="12" loop="1">
               {title}
@@ -139,12 +139,12 @@ const ArtistDetail = () => {
                 <p className="text-xs mt-1 lg:line-clamp-4 line-clamp-6">Join Dane Cook on October 5th for his latest stand-up comedy event ‘Above It All’ filmed from his
                   front porch overlooking Los Angeles. This all new comedy routine is his third w/ director
                   Mart...</p>
-               <div className='flex gap-2 items-center'>
-               <button className="mt-3  font-bold w-full text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={checkOut}>Buy Ticket Now</button>
-                <button className="mt-3 font-bold w-full text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push(`/artist-detail/${id}/live`)}>Join The Event</button>
-               </div>
+                <div className='flex gap-2 items-center'>
+                  <button className="mt-3  font-bold w-full text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={checkOut}>Buy Ticket Now</button>
+                  <button className="mt-3 font-bold w-full text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push(`/artist-detail/${id}/live`)}>Join The Event</button>
+                </div>
                 {/* <button className="mt-3 font-bold text-black py-1 px-3 rounded-md bg-white" type="submit" onClick={() => history.push(`/artist-detail/${id}/record`)}>Watch the Records</button> */}
-                <button className="mt-3 w-full font-bold text-black py-1 px-3 rounded-md bg-white" type="button" onClick={(e)=>openVideoPopup(id)}>Watch the teaser</button>
+                <button className="mt-3 w-full font-bold text-black py-1 px-3 rounded-md bg-white" type="button" onClick={(e) => openVideoPopup(id)}>Watch the teaser</button>
 
               </div>
             </div>
@@ -162,25 +162,25 @@ const ArtistDetail = () => {
           </div>
         </header>
       </div>
-      { (showPopup && teaserPlaybackIdParsed) &&
-          <div
+      {(showPopup && teaserPlaybackIdParsed) &&
+        <div
           id="backdrop"
           className="fixed top-0 right-0 left-0 z-[1000] grid place-items-center min-h-screen backdrop-blur-[3px] p-[10px]"
-      >
-          <div className="max-w-[450px] bg-white rounded-[15px] shadow4 p-8 w-full" style={{position:'relative',cursor:'pointer'}}>
-              <div className="w-full flex justify-center">
-                  <Player
-                    title='Watch the teaser'
-                    src={teaserPlaybackId}
-                    autoPlay
-                    muted
-                    autoUrlUpload={{ fallback: true, ipfsGateway: 'https://w3s.link' }}
-                    showTitle={false}
-                  />
-              </div>
-              <div style={{position:'absolute', right:'10px', top: '10px'}} class="border-circle" onClick={(e)=>{ setShowPopup(false); setTeaserPlaybackId(''); }}>x</div>
+        >
+          <div className="max-w-[450px] bg-white rounded-[15px] shadow4 p-8 w-full" style={{ position: 'relative', cursor: 'pointer' }}>
+            <div className="w-full flex justify-center">
+              <Player
+                title='Watch the teaser'
+                src={teaserPlaybackId}
+                autoPlay
+                muted
+                autoUrlUpload={{ fallback: true, ipfsGateway: 'https://w3s.link' }}
+                showTitle={false}
+              />
+            </div>
+            <div style={{ position: 'absolute', right: '10px', top: '10px' }} className="border-circle" onClick={(e) => { setShowPopup(false); setTeaserPlaybackId(''); }}>x</div>
           </div>
-      </div>
+        </div>
       }
     </div >
   )

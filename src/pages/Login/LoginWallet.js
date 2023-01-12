@@ -8,10 +8,10 @@ import GoLive from '../go-live/GoLive';
 import { useState } from 'react';
 
 const LoginWallet = () => {
-    const [popup,setPopup]=useState(false);
+    const [popup, setPopup] = useState(false);
     const history = useHistory();
     const { id } = useParams();
-    const {pathname}=useLocation();
+    const { pathname } = useLocation();
     let user = Cookies.get('user-data');
     // useEffect(()=>{
     //    if(pathname==='/creator' || pathname==='/go-live'){
@@ -77,7 +77,7 @@ const LoginWallet = () => {
                 <header className="px-4 text-white login-header">
                     <div className="owl-carousel owl-theme relative" >
                         {singerImage.map((item, index) => (
-                            <div className="item" onClick={() => window.open(`/artist-detail/${item.id}`, '_blank')}>
+                            <div key={index} className="item" onClick={() => window.open(`/artist-detail/${item.id}`, '_blank')}>
                                 <div className="slider-wrapper ">
                                     <img src={item?.imgpath} alt="" />
                                     <div className="slider-wrapper-content justify-center  flex flex-col gap-2">
