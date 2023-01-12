@@ -1,14 +1,24 @@
 // import Navbar from '@components/layout/Navbar';
 import React from 'react'
 import { useEffect } from 'react'
-import { NavLink, useHistory, useParams } from 'react-router-dom';
+import { NavLink, useHistory, useLocation, useParams } from 'react-router-dom';
 import { singerImage } from '@utils/constants'
 import Cookies from 'js-cookie';
+import GoLive from '../go-live/GoLive';
+import { useState } from 'react';
 
 const LoginWallet = () => {
+    const [popup, setPopup] = useState(false);
     const history = useHistory();
     const { id } = useParams();
+    const { pathname } = useLocation();
     let user = Cookies.get('user-data');
+    // useEffect(()=>{
+    //    if(pathname==='/creator' || pathname==='/go-live'){
+    //     setPopup(true)
+    //    }
+
+    // },[pathname])
 
     useEffect(() => {
         const $ = window.$;
@@ -63,31 +73,33 @@ const LoginWallet = () => {
     }, [])
     return (
         <>
-            <div className='mt-4'>
+            <div className='mt-6'>
                 <header className="px-4 text-white login-header">
                     <div className="owl-carousel owl-theme relative" >
                         {singerImage.map((item, index) => (
-                            <div className="item" onClick={() => window.open(`/artist-detail/${item.id}`, '_blank')}>
-                                <div className="slider-wrapper h-">
+                            <div key={index} className="item" onClick={() => window.open(`/artist-detail/${item.id}`, '_blank')}>
+                                <div className="slider-wrapper ">
                                     <img src={item?.imgpath} alt="" />
                                     <div className="slider-wrapper-content justify-center  flex flex-col gap-2">
                                         <h2 className={`artfont leading-10 ${index === 0 ? `font-think` : index === 1 ? `font-hey` : index === 2 ? `font-viner` : index === 3 ? 'font-gloucester' : `font-hey`}`}>{item.name}</h2>
-                                        <p className=' min-h-[194px] flex items-'>{item.paragraph}
+                                        <p className=' min-h-[194px] text-white'>{item.paragraph}
                                         </p>
                                         <p>{item.date}</p>
-                                        <button type="submit" className='bg-black px-2 py-1 rounded-xl hover:bg-[#06060691]  text-xs' >Get Tickets</button>
+                                        <button type="submit" className='bg-black px-2 min-w-[140px] flex-shrink-0 w-fit py-2 rounded-xl hover:bg-[#06060691]  text-[16px]' >Get Tickets</button>
                                     </div>
 
                                 </div>
                             </div>
                         ))}
                     </div>
-                    <p className="mt-5  ">
+                    <p className="mt-8  ">
                         <NavLink to="#" className="flex items-center justify-center w-28 mx-auto">See More</NavLink>
                     </p>
                 </header>
 
             </div>
+
+            {/* {popup&&<GoLive setPopup={popup}/>} */}
         </>
     )
 }

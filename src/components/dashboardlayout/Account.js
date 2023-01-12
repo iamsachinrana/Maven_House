@@ -8,7 +8,8 @@ const Account = () => {
         <div className="border-b pb-3">
             <h1 className='lg:text-4xl tablet:text-2xl text-left'>Account</h1>
         </div>
-        <form action="" className='lg:w-[85%] md:w-[80%] w-[90%] mx-auto'>
+        <form action=""   
+autoComplete='off' className='lg:w-[85%] md:w-[80%] w-[90%] mx-auto'>
             <div className="  mt-2 lg:mt-3">
                 <div className="relative block">
                     <label htmlFor="first" className='absolute left-2 top-1 lg:text-body text-xs'>First Name</label>

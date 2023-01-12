@@ -21,7 +21,8 @@ const Creator = () => {
       </div> */}
       <div className=" flex flex-col tablet:flex-row justify-around items-center  text-white py-[8%]  ">
         {/* <div className="w-[320px] tablet:w-[340px] md:w-[450px]  max-w-[650px]">
-          <form action="">
+          <form action=""   
+autoComplete='off'>
             <h3 className='tablet:text-5xl text-2xl font-semibold'>Enter API Key</h3>
             <div className="input-box my-4">
               <input placeholder='Paste API Key here' type="text" className='blur-bg w-full  border-b-2 border-0 text-white' />
@@ -32,7 +33,8 @@ const Creator = () => {
           </form>
         </div>
         <div className="w-[320px] tablet:w-[340px] md:w-[450px] max-w-[650px] blur-bg mt-10 tablet:mt-0 rounded-2xl tablet:p-10 p-5">
-          <form action="">
+          <form action=""   
+autoComplete='off'>
             <div className="grid grid-cols-2 ">
               <div className="">
                 <label htmlFor="">Name:</label>

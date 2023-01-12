@@ -1,8 +1,13 @@
 import { Magic } from "magic-sdk";
 import { ConnectExtension } from "@magic-ext/connect";
 
+const customNodeOptions = {
+  rpcUrl: 'https://rpc-mumbai.maticvigil.com/', // Polygon RPC URL
+  chainId: 80001, // Polygon chain id
+}
+
 export const magic = new Magic("pk_live_1C298480B4160A8F", {
-  network: "goerli",
+  network: customNodeOptions,
   locale: "en_US",
   extensions: [new ConnectExtension()]
 });
