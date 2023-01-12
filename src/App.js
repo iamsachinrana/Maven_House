@@ -44,11 +44,17 @@ import {
   createReactClient,
   studioProvider,
 } from '@livepeer/react';
+import { Web3ReactProvider } from "@web3-react/core";
 
 
 const client = createReactClient({
   provider: studioProvider({ apiKey: 'deacd5f8-0f20-41fa-ada9-c616be3b8323' }),
 });
+
+function getLibrary() {
+  const web3 = new window.Web3(window.ethereum);
+  return web3;
+}
 
 const livepeerTheme = {
   colors: {
@@ -93,30 +99,31 @@ const Routes = ({ }) => {
     <>
       {isVisible && <CustomSnackBar type={type} message={message} />}
       {location.pathname === '/go-live' || location.pathname === '/creator' || location.pathname === '/create-event' || userType?.type === 'creator' ? <CreatorNavbar /> : <Navbar />}
+      <Web3ReactProvider getLibrary={getLibrary}>
+        <LivepeerConfig client={client} theme={livepeerTheme}>
+          <Switch>
+            <Route path={'/home'} exact component={Home} />
+            <Route path={'/'} exact component={LoginWallet} />
+            <Route path={'/magic-login'} exact component={MagicLogin} />
+            <Route path={'/ticket'} exact component={Ticket} />
+            <Route path={'/checkout'} exact component={Checkout} />
+            <Route path={'/create-event'} exact component={CreateEvent} />
+            <Route path={'/faq'} exact component={Faq} />
+            <Route path={'/go-live'} exact component={GoLive} />
+            <Route path={'/artist-detail/:id'} exact component={ArtistDetail} />
+            <Route path={'/artist-detail/:id/live'} exact component={LiveStream} />
+            <Route path={'/artist-detail/:id/record'} exact component={RecordStream} />
+            <Route path={'/lil-nas-x'} exact component={Lil_Nas_X} />
+            <Route path={'/drake'} exact component={Drake} />
+            <Route path={'/doja-cat'} exact component={Doja_Cat} />
+            <Route path={'/emiway'} exact component={Emiway} />
+            <Route path={'/about'} export component={About} />
+            <Route path={'/creator'} export component={Creator} />
+            <Route path={"/dashboard"} render={(props) => <DashboardRoutes {...props} />} />
 
-      <LivepeerConfig client={client} theme={livepeerTheme}>
-        <Switch>
-          <Route path={'/home'} exact component={Home} />
-          <Route path={'/'} exact component={LoginWallet} />
-          <Route path={'/magic-login'} exact component={MagicLogin} />
-          <Route path={'/ticket'} exact component={Ticket} />
-          <Route path={'/checkout'} exact component={Checkout} />
-          <Route path={'/create-event'} exact component={CreateEvent} />
-          <Route path={'/faq'} exact component={Faq} />
-          <Route path={'/go-live'} exact component={GoLive} />
-          <Route path={'/artist-detail/:id'} exact component={ArtistDetail} />
-          <Route path={'/artist-detail/:id/live'} exact component={LiveStream} />
-          <Route path={'/artist-detail/:id/record'} exact component={RecordStream} />
-          <Route path={'/lil-nas-x'} exact component={Lil_Nas_X} />
-          <Route path={'/drake'} exact component={Drake} />
-          <Route path={'/doja-cat'} exact component={Doja_Cat} />
-          <Route path={'/emiway'} exact component={Emiway} />
-          <Route path={'/about'} export component={About} />
-          <Route path={'/creator'} export component={Creator} />
-          <Route path={"/dashboard"} render={(props) => <DashboardRoutes {...props} />} />
-
-        </Switch>
-      </LivepeerConfig>
+          </Switch>
+        </LivepeerConfig>
+      </Web3ReactProvider>  
       {(location.pathname === '/' || location.pathname === '/about' || location.pathname === '/faq' || location.pathname === '/create-event') && <Footer />}
       {isWalletOpen && (
         <ConnectWalletPopup

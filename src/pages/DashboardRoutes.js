@@ -7,6 +7,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import Settings from '../components/dashboardlayout/Settings';
 import Navbar from '../components/layout/Navbar';
 
 
@@ -27,6 +28,7 @@ const DashboardRoutes = () => {
             <Route path={'/dashboard/my-tickets'} exact component={Mytickets} />
             <Route path={'/dashboard/profile'} exact component={Profile} />
             <Route path={'/dashboard/account'} exact component={Account} />
+            <Route path={'/dashboard/settings'} exact component={Settings} />  
            
             {/* <Route path={'/*'} exact component={NotFound} /> */}
           </Switch>

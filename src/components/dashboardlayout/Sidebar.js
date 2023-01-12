@@ -21,6 +21,7 @@ const Sidebar = () => {
           <button className="dash-btn my-1  " onClick={() => history.push("/dashboard/profile")} > <span><CgProfile /></span> <span className=''>Profile</span></button>
           <button className=" dash-btn" onClick={() => history.push("/dashboard/account")}> <span><MdAccountBalanceWallet /></span> <span className=''>Account</span></button>
           <button className="dash-btn mt-1 " ><span><AiFillDollarCircle /></span> <span className=''>Payment Method</span></button>
+          <button className=" dash-btn" onClick={() => history.push("/dashboard/settings")}> <span><MdAccountBalanceWallet /></span> <span className=''>Settings</span></button>
 
         </div>
       </div>

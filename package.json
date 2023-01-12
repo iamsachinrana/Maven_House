@@ -10,11 +10,16 @@
     "@magic-ext/connect": "^0.1.6",
     "@magic-ext/oauth": "^2.1.1",
     "@magic-sdk/types": "^7.1.1",
+    "@pushprotocol/restapi": "^0.2.2",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@unlock-protocol/contracts": "^0.0.14",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/injected-connector": "^6.0.7",
+    "@xmtp/xmtp-js": "^7.7.3",
     "axios": "^1.2.0",
+    "ethers": "^5.7.2",
     "fortmatic": "^2.2.1",
     "framer-motion": "^3.10.6",
     "js-cookie": "^3.0.1",
@@ -47,7 +52,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "eject": "react-app-rewired eject",
+    "lint": "eslint ./src --fix"
   },
   "eslintConfig": {
     "extends": [
