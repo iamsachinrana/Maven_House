@@ -103,7 +103,7 @@ const Navbar = () => {
         <>
             <div>
                 <nav className=" py-2  h-20 mx-auto flex 
-            justify-between text-white  items-center px-4">
+            justify-between text-white  items-center px-[21px]">
                     <div className="">
                         <NavLink to="/">
                             <img src="/images/navbar/maven.png" alt="" /></NavLink>
@@ -111,6 +111,33 @@ const Navbar = () => {
                     <ul className="center gap-8">
                         <li> <NavLink to="/about" className="" >About</NavLink></li>
                         <li><NavLink to="/faq" className="" >FAQ</NavLink></li>
+                        <li>
+                        <div class="dropdown relative">
+      <button
+      className='relative'
+        id="dropdownMenuButton1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="fas fa-bell text-[18px]"></i>
+        <span className='absolute top-[-12px] right-[-8px] w-6 h-6 bg-gray-800 center text-white rounded-full text-[12px]'>2</span>
+        
+      </button>
+      <ul
+        class="dropdown-menu   absolute  hidden  bg-gray-800  text-base  z-50  float-left  py-2  list-none  text-left  rounded-lg  shadow-lg  mt-1  m-0  bg-clip-padding  border-none  min-w-[300px]"
+        aria-labelledby="dropdownMenuButton1">
+           {Array(5).fill('2').map((item,index)=>(
+            <li> <NavLink to='/creator' className=' px-4 py-2 gap-2 flex items-center'> 
+            <img className='w-6 h-6 rounded-full object-cover' src="/images/ticket/bhuvam-r.png" alt="" /> 
+             <span className='text-white/80 hover:text-white'>you just booked a ticket</span></NavLink>
+             </li>
+           ))}
+        
+          
+        
+      </ul>
+    </div>   
+                        </li>
                         {user ?
                             <li className='cursor-pointer login-navbar'>
                                 <div className="w-8 cursor-pointer outline-4  outline-[#3E4046] border border-white h-8 bg-[#9B9B9B] rounded-full  text-sm center">M</div>
@@ -137,7 +164,7 @@ const Navbar = () => {
                             </li>
                             : <li>
                                 {/* <button onClick={login} className="px-1 tablet:px-3 py-1  rounded-3xl border hover:bg-transparent border-gray-600 bg-[#707070]" >Log In / Sign In</button> */}
-                                <button className="px-1 tablet:px-3 py-1  rounded-3xl border hover:bg-transparent border-gray-600 bg-[#707070]"
+                                <button className="px-1 tablet:px-5 py-1  rounded-3xl border hover:bg-transparent border-gray-600 bg-[#333333]"
                                     onClick={() => dispatch(openWalletModal())}
                                 >Log In / Sign In</button>
                             </li>

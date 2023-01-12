@@ -26,12 +26,12 @@ const Footer = () => {
           </ul>
         </div>
         <div className="icons justify-center flex gap-4  mt-2 tablet:mt-0">
-          <a href="">
+          {/* <a href="">
             <BsInstagram size={25} className='iconrotate' />
           </a>
           <a href=""><FaTiktok size={25} className='iconrotate' />
-          </a>
-          <a href=""><FiTwitter size={25} className='iconrotate' />
+          </a> */}
+          <a href="https://twitter.com/MavenHouse_HQ" target={'_blank'}><FiTwitter size={25} className='iconrotate' />
           </a>
         </div>
       </div>
