@@ -124,12 +124,15 @@ const Navbar = () => {
         
       </button>
       <ul
-        class="dropdown-menu   absolute  hidden  bg-gray-800  text-base  z-50  float-left  py-2  list-none  text-left  rounded-lg  shadow-lg  mt-1  m-0  bg-clip-padding  border-none  min-w-[200px]"
+        class="dropdown-menu   absolute  hidden  bg-gray-800  text-base  z-50  float-left  py-2  list-none  text-left  rounded-lg  shadow-lg  mt-1  m-0  bg-clip-padding  border-none  min-w-[300px]"
         aria-labelledby="dropdownMenuButton1">
-            <li className='text-white px-4 py-1'>Check here</li>
-            <li className='text-white px-4 py-1'>Check here</li>
-            <li className='text-white px-4 py-1'>Check here</li>
-            <li className='text-white px-4 py-1'>Check here</li>
+           {Array(5).fill('2').map((item,index)=>(
+            <li> <NavLink to='/creator' className=' px-4 py-2 gap-2 flex items-center'> 
+            <img className='w-6 h-6 rounded-full object-cover' src="/images/ticket/bhuvam-r.png" alt="" /> 
+             <span className='text-white/80 hover:text-white'>you just booked a ticket</span></NavLink>
+             </li>
+           ))}
+        
           
         
       </ul>
